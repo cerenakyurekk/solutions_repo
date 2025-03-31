@@ -40,9 +40,8 @@ This problem connects fundamental concepts of probability, geometry, and numeric
 #### 1. Theoretical Foundation:
 - Describe Buffon’s Needle problem, where \( \pi \) can be estimated based on the probability of a needle crossing parallel lines on a plane.
 - Derive the formula:
-  \[
-  \pi \approx \frac{2 \times \text{needle length} \times \text{number of throws}}{\text{distance between lines} \times \text{number of crossings}}
-  \]
+ π ≈ \frac{\text{distance between lines} \times \text{number of crossings}}{2 \times \text{needle length} \times \text{number of throws}}
+
 
 #### 2. Simulation:
 - Simulate the random dropping of a needle on a plane with parallel lines.

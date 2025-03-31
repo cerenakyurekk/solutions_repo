@@ -19,42 +19,7 @@ Demonstrates how graph theory can streamline calculations, especially for compli
 
 ---
 
-## Task Options:
-
-### Simplified Task:
-
-#### Objective:
-Describe the algorithm for calculating equivalent resistance using graph theory.
-
-#### Focus:
-- Identify series and parallel connections.
-- Iteratively reduce the graph to a single equivalent resistance.
-
-#### Pseudocode:
-Provide pseudocode, explaining how the algorithm handles nested resistor combinations.
-
----
-
-### Advanced Task:
-
-#### Objective:
-Implement the algorithm in a programming language.
-
-#### Key Features:
-- Handle arbitrary resistor configurations.
-- Output the final equivalent resistance.
-- Test with various examples.
-
-#### Deliverables:
-- Full implementation.
-- Examples.
-- Efficiency analysis and possible improvements.
-
----
-
-## Hints and Resources:
-- **Graph simplification**: Focus on detecting series and parallel combinations using graph traversal methods (DFS, BFS).
-- **Tools**: Libraries like `networkx` in Python can help with graph manipulation.
+--
 
 ---
 
@@ -66,15 +31,16 @@ Implement the algorithm in a programming language.
 
 ### Series and Parallel Combinations:
 
-- **Series**: Two resistors are in series if they are connected end-to-end with no intermediate junctions. Their combined resistance is the sum:
-  \[
-  R_{\text{eq}} = R_1 + R_2
-  \]
-  
-- **Parallel**: Two resistors are in parallel if both are connected between the same two nodes. The combined resistance is:
-  \[
-  \frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2}
-  \]
+**Series:** Two resistors are in series if they are connected end-to-end with no intermediate junctions. Their combined resistance is the sum:  
+\[
+R_{\text{eq}} = R_1 + R_2
+\]
+
+**Parallel:** Two resistors are in parallel if both are connected between the same two nodes. The combined resistance is:  
+\[
+\frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2}
+\]
+
 
 ### Graph Simplification:
 
