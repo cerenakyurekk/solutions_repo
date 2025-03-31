@@ -1,4 +1,5 @@
 # Problem 1
+
 ## Solution Approach
 
 ### 1. Select a Regular Polygon
