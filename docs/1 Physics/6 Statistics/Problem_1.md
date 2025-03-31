@@ -2,64 +2,130 @@
 # Exploring the Central Limit Theorem through Simulations
 
 ## Motivation
-The Central Limit Theorem (CLT) is a cornerstone of probability and statistics, stating that the sampling distribution of the sample mean approaches a normal distribution as the sample size increases, regardless of the population’s original distribution. Simulations provide an intuitive and hands-on way to observe this phenomenon in action.
 
-## Task Overview
+The **Central Limit Theorem (CLT)** states that the sampling distribution of the sample mean will approach a normal distribution as the sample size increases, regardless of the original population distribution. This fundamental concept in statistics allows us to make inferences about population parameters using sample data.
+
+## Objective
+
+The objective is to simulate and visualize the Central Limit Theorem (CLT) through different population distributions to observe how the sampling distribution of the sample mean converges to a normal distribution as the sample size increases.
+
+## Task Breakdown
 
 ### 1. Simulating Sampling Distributions
 
-#### Step 1: Choose Populations
-We will simulate three different types of population distributions:
+#### Population Distributions:
+Select several population distributions to simulate:
+1. **Uniform Distribution**: All values within a specified range have an equal probability of being chosen.
+2. **Exponential Distribution**: Follows an exponential decay pattern, commonly used to model waiting times.
+3. **Binomial Distribution**: Represents the number of successes in a fixed number of trials (e.g., number of heads in a series of coin flips).
 
-1. **Uniform Distribution**: Every number within a given range has an equal chance of being selected.
-2. **Exponential Distribution**: The population follows an exponential decay pattern, commonly used in scenarios like waiting times.
-3. **Binomial Distribution**: A distribution representing the number of successes in a fixed number of independent trials, such as the number of heads in a series of coin flips.
-
-#### Step 2: Generate a Large Population Dataset
-For each of the above distributions, we will generate a large dataset that represents our population. This large dataset will then be used to draw random samples for our simulation.
+**Step 1**: Generate a large dataset for each of these distributions to represent the population.
 
 ### 2. Sampling and Visualization
 
-#### Step 1: Sampling
-For each distribution, we will:
-1. Randomly sample data from the population with different sample sizes (5, 10, 30, 50).
-2. Calculate the sample mean for each sample drawn.
-3. Repeat the sampling process multiple times (e.g., 1,000 times) to create a distribution of sample means.
+#### Sampling Process:
+1. **Random Sampling**: Randomly sample from the generated population data.
+2. **Sample Mean Calculation**: For each sample, calculate the sample mean.
+3. **Multiple Sampling**: Repeat the sampling process multiple times (e.g., 1,000 repetitions) for different sample sizes (e.g., 5, 10, 30, 50).
 
-#### Step 2: Visualizing the Sampling Distribution
-We will plot histograms of the sample means for each sample size and observe the convergence to a normal distribution. For larger sample sizes, we expect the histogram to look more normal, in line with the Central Limit Theorem.
+#### Visualization:
+- Plot histograms of the sample means for each sample size.
+- Observe the convergence to normality: As the sample size increases, the distribution of the sample means should approach a normal distribution.
 
 ### 3. Parameter Exploration
 
-We'll investigate the following factors:
-1. **Effect of Population Shape**: How does the shape of the original population (uniform, exponential, binomial) affect the sampling distribution's convergence to normality?
-2. **Effect of Sample Size**: As the sample size increases, how does the sampling distribution of the sample mean approach normality?
-3. **Variance**: We'll observe how the variance of the population affects the spread of the sampling distribution.
+#### Exploration of Factors:
+1. **Effect of Population Shape**: Investigate how the shape of the original population (uniform, exponential, binomial) affects the convergence of the sampling distribution to normality.
+2. **Effect of Sample Size**: Study how the sample size influences the convergence of the sampling distribution to a normal distribution.
+3. **Effect of Variance**: Observe how the population variance affects the spread of the sampling distribution of the sample mean.
 
 ### 4. Practical Applications
-Reflecting on the significance of CLT:
-- **Estimating Population Parameters**: Understanding how sample means approximate population means as sample size grows.
-- **Quality Control**: In manufacturing, the CLT helps in determining acceptable ranges for product features and predicting defects.
-- **Financial Models**: CLT is crucial for understanding risk and predicting stock prices and returns.
 
-### 5. Deliverables
+#### Real-World Implications of the Central Limit Theorem:
+1. **Estimating Population Parameters**: CLT helps in using sample means to approximate the population mean. As sample size increases, sample means become more accurate estimators of the population mean.
+2. **Quality Control**: In manufacturing, the CLT allows for prediction and monitoring of product quality by sampling and analyzing sample data.
+3. **Financial Models**: CLT is crucial for understanding risk in finance, helping to predict stock prices, returns, and other financial metrics by treating sample means as approximations of true population values.
 
-- **Markdown Document**: Documenting the task, explaining the CLT, describing the simulation process, and interpreting the results.
-- **Python Scripts/Notebooks**: A script or notebook that performs the simulations and visualizations.
-- **Plots**: Histograms showing how the sampling distributions of the sample mean converge to normal as sample size increases.
+---
 
-### Key Insights from Simulations:
-- **Uniform Distribution**: As sample size increases, the distribution of the sample mean will approach a normal distribution, even though the uniform distribution is not normal.
-- **Exponential Distribution**: Even though the exponential distribution is skewed, the sampling distribution of the mean will approach normality as the sample size increases.
-- **Binomial Distribution**: For large sample sizes, the binomial distribution (which is discrete) will also approximate a normal distribution, as per the CLT.
+By simulating different population distributions and observing the convergence of the sampling distribution of the sample mean to normality, we can deepen our understanding of the Central Limit Theorem and its significance in various fields, including statistics, quality control, and finance.
 
-By running the simulations and observing the results, we can better understand how the CLT works and how the sample size and population shape affect the convergence to a normal distribution.
 
+```python
+# Importing necessary libraries
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Set random seed for reproducibility
+np.random.seed(42)
+
+# Population size
+population_size = 100000
+
+# 1. Uniform Distribution (Range from 0 to 10)
+uniform_population = np.random.uniform(low=0, high=10, size=population_size)
+
+# 2. Exponential Distribution (Scale parameter 2)
+exponential_population = np.random.exponential(scale=2, size=population_size)
+
+# 3. Binomial Distribution (10 trials, 0.5 probability of success)
+binomial_population = np.random.binomial(n=10, p=0.5, size=population_size)
+
+# Function to calculate sample means
+def sample_means(population, sample_size, n_samples):
+    """Returns a list of sample means from random samples of given size."""
+    sample_means = []
+    for _ in range(n_samples):
+        sample = np.random.choice(population, size=sample_size)
+        sample_means.append(np.mean(sample))
+    return sample_means
+
+# Function to plot the sampling distribution of sample means
+def plot_sampling_distribution(population, sample_sizes, n_samples=1000):
+    """Plots histograms of sample means for different sample sizes."""
+    plt.figure(figsize=(14, 10))
+
+    for i, sample_size in enumerate(sample_sizes):
+        sample_means_values = sample_means(population, sample_size, n_samples)
+        plt.subplot(2, 2, i + 1)
+        sns.histplot(sample_means_values, kde=True, stat="density", bins=30)
+        plt.title(f"Sample Size: {sample_size}")
+        plt.xlabel('Sample Mean')
+        plt.ylabel('Density')
+
+    plt.tight_layout()
+    plt.show()
+
+# Sample sizes to consider
+sample_sizes = [5, 10, 30, 50]
+
+# Visualize sampling distributions for each population
+print("Uniform Distribution Sampling Distributions:")
+plot_sampling_distribution(uniform_population, sample_sizes)
+
+print("Exponential Distribution Sampling Distributions:")
+plot_sampling_distribution(exponential_population, sample_sizes)
+
+print("Binomial Distribution Sampling Distributions:")
+plot_sampling_distribution(binomial_population, sample_sizes)
+
+# Function to calculate and print variance of sample means
+def variance_of_sample_means(population, sample_sizes, n_samples=1000):
+    """Calculates and prints the variance of sample means for different sample sizes."""
+    for sample_size in sample_sizes:
+        sample_means_values = sample_means(population, sample_size, n_samples)
+        print(f"Sample Size: {sample_size} -> Variance of Sample Means: {np.var(sample_means_values)}")
+
+# Calculate and display variance for each population
+print("\nVariance of Sample Means for Uniform Distribution:")
+variance_of_sample_means(uniform_population, sample_sizes)
+
+print("\nVariance of Sample Means for Exponential Distribution:")
+variance_of_sample_means(exponential_population, sample_sizes)
+
+print("\nVariance of Sample Means for Binomial Distribution:")
+variance_of_sample_means(binomial_population, sample_sizes)
 
 ```
-```
-![alt text](image10.png)
-```
-```
-![alt text](image12.png)
-
+![alt text](image16.png)

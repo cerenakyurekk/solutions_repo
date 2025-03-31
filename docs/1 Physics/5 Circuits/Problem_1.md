@@ -2,84 +2,90 @@
 # Equivalent Resistance Using Graph Theory
 
 ## Motivation:
-Calculating equivalent resistance is a fundamental problem in electrical circuits, essential for understanding and designing efficient systems. While traditional methods involve iteratively applying series and parallel resistor rules, these approaches can become cumbersome for complex circuits with many components. Graph theory offers a powerful alternative, providing a structured and algorithmic way to analyze circuits.
+### Challenge:
+Calculating equivalent resistance in electrical circuits can be cumbersome, especially with complex resistor networks.
 
-By representing a circuit as a graph—where nodes correspond to junctions and edges represent resistors with weights equal to their resistance values—we can systematically simplify even the most intricate networks. This method not only streamlines calculations but also opens the door to automated analysis, making it particularly useful in modern applications like circuit simulation software, optimization problems, and network design.
+### Graph Theory Approach:
+Represent the circuit as a graph to simplify the process of calculating the equivalent resistance.
 
-Studying equivalent resistance through graph theory is valuable not only for its practical applications but also for the deeper insights it provides into the interplay between electrical and mathematical concepts. This approach highlights the versatility of graph theory, demonstrating its relevance across physics, engineering, and computer science.
+- **Nodes** represent junctions (connection points).
+- **Edges** represent resistors, with weights corresponding to their resistance values.
+
+### Applications:
+- Useful in circuit simulation software, optimization, and network design.
+
+### Purpose:
+Demonstrates how graph theory can streamline calculations, especially for complicated networks.
+
+---
 
 ## Task Options:
-### Option 1: Simplified Task – Algorithm Description
-Describe the algorithm for calculating the equivalent resistance using graph theory.
 
-Provide the pseudocode that:
-- Identifies series and parallel connections.
-- Iteratively reduces the graph until a single equivalent resistance is obtained.
-- Includes a clear explanation of how the algorithm handles nested combinations.
+### Simplified Task:
 
-### Option 2: Advanced Task – Full Implementation
-Implement the algorithm in a programming language of your choice.
+#### Objective:
+Describe the algorithm for calculating equivalent resistance using graph theory.
 
-Ensure the implementation:
-- Accepts a circuit graph as input.
-- Handles arbitrary resistor configurations, including nested series and parallel connections.
-- Outputs the final equivalent resistance.
-- Test your implementation with examples, such as:
-  - Simple series and parallel combinations.
-  - Nested configurations.
-  - Complex graphs with multiple cycles.
+#### Focus:
+- Identify series and parallel connections.
+- Iteratively reduce the graph to a single equivalent resistance.
+
+#### Pseudocode:
+Provide pseudocode, explaining how the algorithm handles nested resistor combinations.
+
+---
+
+### Advanced Task:
+
+#### Objective:
+Implement the algorithm in a programming language.
+
+#### Key Features:
+- Handle arbitrary resistor configurations.
+- Output the final equivalent resistance.
+- Test with various examples.
 
 #### Deliverables:
-- A detailed pseudocode (but preferably a full implementation) and explanation of the algorithm.
-- Description of how it handles complex circuit configurations on three input examples.
-- A brief analysis of the algorithm's efficiency and potential improvements.
+- Full implementation.
+- Examples.
+- Efficiency analysis and possible improvements.
 
-#### Hints and Resources:
-- Focus on iterative graph simplification:
-  - Detect linear chains for series reduction.
-  - Identify cycles for parallel reduction.
-- Use tools like networkx (Python) or similar for graph manipulation if you choose implementation.
-- Depth-first search (DFS) or other traversal methods can help identify patterns in the graph.
+---
+
+## Hints and Resources:
+- **Graph simplification**: Focus on detecting series and parallel combinations using graph traversal methods (DFS, BFS).
+- **Tools**: Libraries like `networkx` in Python can help with graph manipulation.
 
 ---
 
 ## Algorithm Description
 
-The basic idea is to represent the circuit as a graph, where:
-- **Nodes (vertices)** represent the junctions or connection points.
-- **Edges** represent resistors, with weights corresponding to their resistance values.
+### Graph Representation:
+- **Nodes (vertices)** represent junctions.
+- **Edges** represent resistors, with weights equal to their resistance values.
 
-The algorithm will simplify the circuit graph step-by-step, reducing series and parallel resistor combinations to a single equivalent resistance. The reduction follows these rules:
-- **Series combination**: If two resistors are in series (i.e., connected directly without any branching in between), the equivalent resistance is simply the sum of the two resistances.
+### Series and Parallel Combinations:
+
+- **Series**: Two resistors are in series if they are connected end-to-end with no intermediate junctions. Their combined resistance is the sum:
   \[
   R_{\text{eq}} = R_1 + R_2
   \]
-- **Parallel combination**: If two resistors are in parallel (i.e., both connected between the same two nodes), the equivalent resistance is given by:
+  
+- **Parallel**: Two resistors are in parallel if both are connected between the same two nodes. The combined resistance is:
   \[
   \frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2}
   \]
 
----
+### Graph Simplification:
 
-## Algorithm Steps:
-1. **Input Representation**:
-   - The circuit is represented as a graph \( G(V, E) \), where each edge \( (u, v) \) has a weight \( w(u, v) \) corresponding to the resistor’s resistance.
-   
-2. **Identify Series and Parallel Connections**:
-   - **Series connection**: Two resistors are in series if they are connected end-to-end, with no other connections between them. This can be identified by checking nodes with only two connections (except for the start and end).
-   - **Parallel connection**: Two resistors are in parallel if both resistors are connected between the same pair of nodes. This can be identified by checking pairs of resistors that share the same start and end nodes.
-   
-3. **Graph Simplification**:
-   - **Series reduction**: If resistors are in series, replace them with a single resistor whose value is the sum of the two resistances. The corresponding graph edge between the two nodes will be updated with the new resistance.
-   - **Parallel reduction**: If resistors are in parallel, replace them with a single resistor whose value is calculated by the parallel formula. The corresponding graph edge will be updated with the new equivalent resistance.
+- **Series Reduction**: Replace two resistors in series with their sum.
+- **Parallel Reduction**: Replace two resistors in parallel with their equivalent resistance.
 
-4. **Iterate**:
-   - Continue reducing the graph by finding series and parallel combinations and replacing them with their equivalent resistances until only one edge (the equivalent resistance) remains in the graph.
+### Iterative Process:
+- Continuously reduce the graph by combining resistors in series or parallel until only one edge remains.
 
-5. **Handle Nested Combinations**:
-   - As the graph simplifies, new series and parallel combinations may emerge. The algorithm should recursively or iteratively re-check the graph after each reduction.
-
----
+### Handle Nested Combinations:
+- After each reduction, new series and parallel combinations may emerge. The algorithm should re-check the graph after each reduction.
 
 ## Pseudocode:
 
