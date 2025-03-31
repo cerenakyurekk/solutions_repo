@@ -46,9 +46,8 @@ This is a linear second-order non-homogeneous differential equation. We can solv
 
 - The **homogeneous solution** \( \theta_h(t) \) solves the equation without the external forcing term:
 
-  \[
-  \frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \frac{g}{L} \theta = 0
-  \]
+  \frac{d^2 \theta}{dt^2} + b \frac{d \theta}{dt} + \frac{g}{L} \theta = 0
+
 
   The solution for the homogeneous equation depends on the damping condition:
   - **Underdamped**: \( b^2 < 4m\frac{g}{L} \) (exponentially decaying oscillations)
@@ -57,9 +56,8 @@ This is a linear second-order non-homogeneous differential equation. We can solv
 
 - The **particular solution** \( \theta_p(t) \) is driven by the external periodic force \( A \cos(\omega t) \). This can be found using a method like **undetermined coefficients**:
 
-  \[
-  \theta_p(t) = \frac{A}{\sqrt{(\frac{g}{L} - \omega^2)^2 + (b\omega)^2}} \cos(\omega t - \phi)
-  \]
+  \theta_p(t) = \frac{A}{\sqrt{\left(\frac{g}{L} - \omega^2\right)^2 + (b\omega)^2}} \cos(\omega t - \phi)
+
 
   where \( \phi \) is a phase shift dependent on the system's parameters.
 
