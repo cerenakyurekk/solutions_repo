@@ -153,22 +153,59 @@
 </ul>
 <h2 id="solution-approach">Solution Approach</h2>
 <h3 id="1-small-angle-approximation">1. Small-Angle Approximation</h3>
-<p>For small angles (<span class="arithmatex">\( \theta \approx 0 \)</span>), we approximate <span class="arithmatex">\( \sin\theta \approx \theta \)</span>, simplifying the equation to:</p>
+<p>For small angles, we can approximate <span class="arithmatex">\( \sin\theta \approx \theta \)</span>. This leads to the simplified equation for the motion of the pendulum:</p>
 <div class="arithmatex">\[
 \frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \frac{g}{L} \theta = A \cos(\omega t)
 \]</div>
-<p>This is a linear second-order differential equation with a known analytical solution in the form:</p>
+<p>This is a linear second-order non-homogeneous differential equation. We can solve it in two parts:</p>
+<ul>
+<li>The <strong>homogeneous solution</strong> <span class="arithmatex">\( \theta_h(t) \)</span> solves the equation without the external forcing term:</li>
+</ul>
+<p>[
+  \frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \frac{g}{L} \theta = 0
+  ]</p>
+<p>The solution for the homogeneous equation depends on the damping condition:
+  - <strong>Underdamped</strong>: <span class="arithmatex">\( b^2 &lt; 4m\frac{g}{L} \)</span> (exponentially decaying oscillations)
+  - <strong>Critically damped</strong>: <span class="arithmatex">\( b^2 = 4m\frac{g}{L} \)</span>
+  - <strong>Overdamped</strong>: <span class="arithmatex">\( b^2 &gt; 4m\frac{g}{L} \)</span> (no oscillations, just exponential decay)</p>
+<ul>
+<li>The <strong>particular solution</strong> <span class="arithmatex">\( \theta_p(t) \)</span> is driven by the external periodic force <span class="arithmatex">\( A \cos(\omega t) \)</span>. This can be found using a method like <strong>undetermined coefficients</strong>:</li>
+</ul>
+<p>[
+  \theta_p(t) = \frac{A}{\sqrt{(\frac{g}{L} - \omega^2)^2 + (b\omega)^2}} \cos(\omega t - \phi)
+  ]</p>
+<p>where <span class="arithmatex">\( \phi \)</span> is a phase shift dependent on the system's parameters.</p>
+<p>Thus, the total solution for small-angle oscillations is the sum of the homogeneous and particular solutions:</p>
 <div class="arithmatex">\[
-\theta(t) = C_1 e^{\lambda_1 t} + C_2 e^{\lambda_2 t} + \theta_p(t)
+\theta(t) = C_1 e^{\lambda_1 t} + C_2 e^{\lambda_2 t} + \frac{A}{\sqrt{(\frac{g}{L} - \omega^2)^2 + (b\omega)^2}} \cos(\omega t - \phi)
 \]</div>
-<p>where:
-- <span class="arithmatex">\( \lambda_1, \lambda_2 \)</span> are roots of the characteristic equation.
-- <span class="arithmatex">\( \theta_p(t) \)</span> is the particular solution due to external forcing.
-- The behavior depends on whether the system is underdamped, critically damped, or overdamped.</p>
-<h3 id="2-numerical-solution-for-arbitrary-angles">2. Numerical Solution for Arbitrary Angles</h3>
-<p>For larger angles where <span class="arithmatex">\( \sin\theta \)</span> cannot be approximated by <span class="arithmatex">\( \theta \)</span>, we solve the equation numerically using the Runge-Kutta method.</p>
-<h3 id="3-python-implementation">3. Python Implementation</h3>
-<p>We'll integrate the system using the <strong>Runge-Kutta</strong> method for arbitrary angles.</p>
+<h3 id="2-resonance-condition">2. <strong>Resonance Condition</strong></h3>
+<p>The system reaches resonance when the frequency of the driving force matches the natural frequency of the system, which is given by:</p>
+<div class="arithmatex">\[
+\omega_0 = \sqrt{\frac{g}{L}}
+\]</div>
+<p>At resonance, the system can oscillate with maximum amplitude if the damping is not too large. The condition for resonance is:</p>
+<div class="arithmatex">\[
+\omega = \omega_0
+\]</div>
+<p>When this condition is met, even a small driving force can result in large oscillations, especially if the damping is low.</p>
+<h3 id="3-analysis-of-dynamics">3. <strong>Analysis of Dynamics</strong></h3>
+<h4 id="a-influence-of-damping">a) <strong>Influence of Damping</strong>:</h4>
+<p>The damping term <span class="arithmatex">\( b \)</span> directly affects how quickly the system loses energy. High damping results in the system reaching equilibrium faster, while low damping allows for longer oscillations before the motion dies out. The transition from underdamped to overdamped behavior is particularly important for understanding resonance phenomena.</p>
+<h4 id="b-driving-amplitude-and-frequency">b) <strong>Driving Amplitude and Frequency</strong>:</h4>
+<ul>
+<li><strong>Amplitude <span class="arithmatex">\( A \)</span></strong>: Larger driving forces lead to larger oscillations, but can also push the system into chaotic regimes if the parameters are favorable.</li>
+<li><strong>Frequency <span class="arithmatex">\( \omega \)</span></strong>: The frequency of the driving force determines whether the system oscillates at resonance, which can lead to large-amplitude oscillations, or at other frequencies, which can result in more complex behaviors.</li>
+</ul>
+<h3 id="4-numerical-solution-for-arbitrary-angles">4. <strong>Numerical Solution for Arbitrary Angles</strong></h3>
+<p>For larger angles, where the small-angle approximation doesn't hold, we need to numerically solve the full nonlinear differential equation:</p>
+<div class="arithmatex">\[
+\frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \frac{g}{L} \sin\theta = A \cos(\omega t)
+\]</div>
+<p>We will implement this equation using the <strong>Runge-Kutta method</strong> to obtain numerical solutions for arbitrary initial conditions, driving forces, and damping.</p>
+<h3 id="5-phase-diagram-and-poincare-sections">5. <strong>Phase Diagram and Poincaré Sections</strong></h3>
+<p>For a more detailed analysis, you can plot phase diagrams and Poincaré sections to visualize transitions to chaotic motion. A phase diagram shows the trajectory of the system in phase space (angle vs. angular velocity), while a Poincaré section slices the trajectory at regular intervals, helping to identify periodic or chaotic behavior.</p>
+<hr/>
 <h4 id="python-code">Python Code:</h4>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
