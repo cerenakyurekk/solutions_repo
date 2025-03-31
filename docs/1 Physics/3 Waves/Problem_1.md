@@ -104,4 +104,4 @@ plt.show()
 
 
 ```
-![alt text](image13.png)
+![alt text](wave.png)
