@@ -184,38 +184,45 @@ where:
 <hr/>
 <h2 id="python-code-implementation">Python Code Implementation</h2>
 <p>Below is a Python script that simulates and visualizes the motion of a charged particle in uniform and crossed electric and magnetic fields.</p>
-<p>import numpy as np
+<pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D</p>
-<h1 id="constants">Constants</h1>
-<p>q = 1.6e-19  # Charge of the particle (Coulombs)
+from mpl_toolkits.mplot3d import Axes3D
+
+# Constants
+q = 1.6e-19  # Charge of the particle (Coulombs)
 m = 9.11e-31  # Mass of the particle (kg)
 E = np.array([0, 0, 0])  # Electric field (V/m)
-B = np.array([0, 0, 1])  # Magnetic field (Tesla)</p>
-<h1 id="initial-conditions">Initial conditions</h1>
-<p>v0 = np.array([1e5, 0, 0])  # Initial velocity (m/s)
-r0 = np.array([0, 0, 0])    # Initial position (m)</p>
-<h1 id="time-parameters">Time parameters</h1>
-<p>dt = 1e-10  # Time step (seconds)
+B = np.array([0, 0, 1])  # Magnetic field (Tesla)
+
+# Initial conditions
+v0 = np.array([1e5, 0, 0])  # Initial velocity (m/s)
+r0 = np.array([0, 0, 0])    # Initial position (m)
+
+# Time parameters
+dt = 1e-10  # Time step (seconds)
 t_max = 1e-6  # Maximum time (seconds)
-num_steps = int(t_max / dt)  # Number of steps</p>
-<h1 id="initialize-arrays-to-store-the-trajectory">Initialize arrays to store the trajectory</h1>
-<p>positions = np.zeros((num_steps, 3))
-velocities = np.zeros((num_steps, 3))</p>
-<h1 id="set-initial-values">Set initial values</h1>
-<p>positions[0] = r0
-velocities[0] = v0</p>
-<h1 id="simulation-loop-using-euler-method">Simulation loop using Euler method</h1>
-<p>for i in range(1, num_steps):
+num_steps = int(t_max / dt)  # Number of steps
+
+# Initialize arrays to store the trajectory
+positions = np.zeros((num_steps, 3))
+velocities = np.zeros((num_steps, 3))
+
+# Set initial values
+positions[0] = r0
+velocities[0] = v0
+
+# Simulation loop using Euler method
+for i in range(1, num_steps):
     # Lorentz force
-    F = q * (E + np.cross(velocities[i-1], B))</p>
-<pre><code># Update velocity and position
-acceleration = F / m
-velocities[i] = velocities[i-1] + acceleration * dt
-positions[i] = positions[i-1] + velocities[i] * dt
-</code></pre>
-<h1 id="plotting-the-trajectory-in-3d">Plotting the trajectory in 3D</h1>
-<p>fig = plt.figure(figsize=(10, 8))
+    F = q * (E + np.cross(velocities[i-1], B))
+
+    # Update velocity and position
+    acceleration = F / m
+    velocities[i] = velocities[i-1] + acceleration * dt
+    positions[i] = positions[i-1] + velocities[i] * dt
+
+# Plotting the trajectory in 3D
+fig = plt.figure(figsize=(10, 8))
 ax = fig.add_subplot(111, projection='3d')
 ax.plot(positions[:, 0], positions[:, 1], positions[:, 2], label='Particle Trajectory')
 ax.set_xlabel('X Position (m)')
@@ -223,18 +230,21 @@ ax.set_ylabel('Y Position (m)')
 ax.set_zlabel('Z Position (m)')
 ax.set_title('Particle Trajectory in a Uniform Magnetic Field')
 ax.legend()
-plt.show()</p>
-<h1 id="plotting-the-trajectory-in-2d-xy-plane">Plotting the trajectory in 2D (XY plane)</h1>
-<p>plt.figure(figsize=(8, 6))
+plt.show()
+
+# Plotting the trajectory in 2D (XY plane)
+plt.figure(figsize=(8, 6))
 plt.plot(positions[:, 0], positions[:, 1], label='Particle Trajectory')
 plt.xlabel('X Position (m)')
 plt.ylabel('Y Position (m)')
 plt.title('Particle Trajectory in XY Plane (Uniform Magnetic Field)')
 plt.legend()
 plt.grid(True)
-plt.show()</p>
-<pre><code></code></pre>
-<p><img alt="alt text" src="../image8.png"/>```
+plt.show()
+
+
+</code></pre>
+<p><code>![alt text](image8.png)</code>
 <img alt="alt text" src="../image9.png"/></p>
 </div>
 </div><footer>
