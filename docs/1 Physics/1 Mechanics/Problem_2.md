@@ -15,7 +15,7 @@ Adding forcing introduces new parameters, such as the amplitude and frequency of
   \[
   \frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \frac{g}{L} \sin\theta = A \cos(\omega t)
   \]
-  
+
 - Derive the approximate solutions for small-angle oscillations.
 - Explore resonance conditions and their implications for the system's energy.
 
@@ -34,28 +34,82 @@ Adding forcing introduces new parameters, such as the amplitude and frequency of
 ## Solution Approach
 
 ### 1. Small-Angle Approximation
-For small angles (\( \theta \approx 0 \)), we approximate \( \sin\theta \approx \theta \), simplifying the equation to:
+
+For small angles, we can approximate \( \sin\theta \approx \theta \). This leads to the simplified equation for the motion of the pendulum:
 
 \[
 \frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \frac{g}{L} \theta = A \cos(\omega t)
 \]
 
-This is a linear second-order differential equation with a known analytical solution in the form:
+This is a linear second-order non-homogeneous differential equation. We can solve it in two parts:
+
+- The **homogeneous solution** \( \theta_h(t) \) solves the equation without the external forcing term:
+
+  \[
+  \frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \frac{g}{L} \theta = 0
+  \]
+
+  The solution for the homogeneous equation depends on the damping condition:
+  - **Underdamped**: \( b^2 < 4m\frac{g}{L} \) (exponentially decaying oscillations)
+  - **Critically damped**: \( b^2 = 4m\frac{g}{L} \)
+  - **Overdamped**: \( b^2 > 4m\frac{g}{L} \) (no oscillations, just exponential decay)
+
+- The **particular solution** \( \theta_p(t) \) is driven by the external periodic force \( A \cos(\omega t) \). This can be found using a method like **undetermined coefficients**:
+
+  \[
+  \theta_p(t) = \frac{A}{\sqrt{(\frac{g}{L} - \omega^2)^2 + (b\omega)^2}} \cos(\omega t - \phi)
+  \]
+
+  where \( \phi \) is a phase shift dependent on the system's parameters.
+
+Thus, the total solution for small-angle oscillations is the sum of the homogeneous and particular solutions:
 
 \[
-\theta(t) = C_1 e^{\lambda_1 t} + C_2 e^{\lambda_2 t} + \theta_p(t)
+\theta(t) = C_1 e^{\lambda_1 t} + C_2 e^{\lambda_2 t} + \frac{A}{\sqrt{(\frac{g}{L} - \omega^2)^2 + (b\omega)^2}} \cos(\omega t - \phi)
 \]
 
-where:
-- \( \lambda_1, \lambda_2 \) are roots of the characteristic equation.
-- \( \theta_p(t) \) is the particular solution due to external forcing.
-- The behavior depends on whether the system is underdamped, critically damped, or overdamped.
+### 2. **Resonance Condition**
 
-### 2. Numerical Solution for Arbitrary Angles
-For larger angles where \( \sin\theta \) cannot be approximated by \( \theta \), we solve the equation numerically using the Runge-Kutta method.
+The system reaches resonance when the frequency of the driving force matches the natural frequency of the system, which is given by:
 
-### 3. Python Implementation
-We'll integrate the system using the **Runge-Kutta** method for arbitrary angles.
+\[
+\omega_0 = \sqrt{\frac{g}{L}}
+\]
+
+At resonance, the system can oscillate with maximum amplitude if the damping is not too large. The condition for resonance is:
+
+\[
+\omega = \omega_0
+\]
+
+When this condition is met, even a small driving force can result in large oscillations, especially if the damping is low.
+
+### 3. **Analysis of Dynamics**
+
+#### a) **Influence of Damping**:
+
+The damping term \( b \) directly affects how quickly the system loses energy. High damping results in the system reaching equilibrium faster, while low damping allows for longer oscillations before the motion dies out. The transition from underdamped to overdamped behavior is particularly important for understanding resonance phenomena.
+
+#### b) **Driving Amplitude and Frequency**:
+- **Amplitude \( A \)**: Larger driving forces lead to larger oscillations, but can also push the system into chaotic regimes if the parameters are favorable.
+- **Frequency \( \omega \)**: The frequency of the driving force determines whether the system oscillates at resonance, which can lead to large-amplitude oscillations, or at other frequencies, which can result in more complex behaviors.
+
+### 4. **Numerical Solution for Arbitrary Angles**
+
+For larger angles, where the small-angle approximation doesn't hold, we need to numerically solve the full nonlinear differential equation:
+
+\[
+\frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \frac{g}{L} \sin\theta = A \cos(\omega t)
+\]
+
+We will implement this equation using the **Runge-Kutta method** to obtain numerical solutions for arbitrary initial conditions, driving forces, and damping.
+
+### 5. **Phase Diagram and Poincaré Sections**
+
+For a more detailed analysis, you can plot phase diagrams and Poincaré sections to visualize transitions to chaotic motion. A phase diagram shows the trajectory of the system in phase space (angle vs. angular velocity), while a Poincaré section slices the trajectory at regular intervals, helping to identify periodic or chaotic behavior.
+
+---
+
 
 #### Python Code:
 ```python
