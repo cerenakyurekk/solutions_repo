@@ -90,7 +90,7 @@ Using the provided formulas, we can calculate these velocities for Earth, Mars, 
 - **Interstellar Travel:** 
 ::contentReference[oaicite:41]{index=41}
  
-
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 

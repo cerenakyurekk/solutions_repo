@@ -71,7 +71,7 @@ We’ll visualize the particle’s trajectory in 2D and 3D using **Matplotlib**.
 
 Below is a Python script that simulates and visualizes the motion of a charged particle in uniform and crossed electric and magnetic fields.
 
-
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
