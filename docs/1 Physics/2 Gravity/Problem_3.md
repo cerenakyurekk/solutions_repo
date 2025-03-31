@@ -139,7 +139,7 @@ The trajectories of the payload can fall into several categories based on its in
 
 These trajectories have important implications for space missions, including satellite launches, interplanetary exploration, and the controlled reentry of space objects.
 
----
+
 
 ## 2. Python Script or Jupyter Notebook
 
@@ -152,7 +152,7 @@ The Python script or Jupyter notebook will simulate the motion of the payload un
 ### Code for Plotting the Trajectory and Visualizing the Motion of the Payload
 The code will include a section for plotting the trajectory of the payload as it moves under the influence of Earth's gravity. The plot will show the motion in two dimensions (x and y) and represent the payload’s path relative to Earth.
 
----
+
 
 ## 3. Graphical Representations
 
@@ -167,7 +167,7 @@ The simulation will allow for different initial conditions to be tested, resulti
 
 These trajectories will be visualized on separate plots to demonstrate the effect of different initial velocities and positions.
 
----
+
 
 ## Conclusion
 This project provides a comprehensive approach to understanding the motion of a payload near Earth. By applying principles from orbital mechanics and gravitational theory, we simulate and visualize the possible trajectories of the payload. These simulations help in understanding real-world applications, such as:

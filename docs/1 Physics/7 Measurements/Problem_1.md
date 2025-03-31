@@ -58,67 +58,55 @@ g = \frac{4\pi^2 L}{T^2}
    - Variability in timing and its impact on \( \Delta T \).
    - Any assumptions or experimental limitations.
  
- ```python
+```python
 import numpy as np
 import pandas as pd
-import math
-
-# Function to simulate measuring the time for 10 oscillations
-def measure_time_for_10_oscillations(num_measurements=10):
-    times = np.random.normal(loc=20.0, scale=0.5, size=num_measurements)  # Simulate 10 measurements with mean and std deviation
-    return times
 
 # Constants
-L = 1.0  # Length of pendulum in meters
-ruler_resolution = 0.01  # Resolution of measuring tool in meters
-n = 10  # Number of measurements
-true_gravity = 9.81  # True value of gravity in m/s^2
+pi = np.pi
+g_standard = 9.81  # Standard value of gravitational acceleration in m/s²
 
-# Uncertainty in Length
+# User input or measured values
+L = 1.0  # Length of the pendulum in meters (Example: 1 meter)
+ruler_resolution = 0.001  # Ruler resolution in meters (Example: 1 mm)
+n = 10  # Number of throws for averaging
+T_10_values = np.array([19.8, 20.1, 20.0, 19.9, 20.2, 20.0, 19.7, 20.1, 19.8, 20.0])  # Measured times for 10 oscillations in seconds
+
+# Uncertainty in length (ΔL)
 delta_L = ruler_resolution / 2
 
-# Simulating the data collection
-times_10_oscillations = measure_time_for_10_oscillations(num_measurements=n)
+# Step 1: Calculate the mean time for 10 oscillations and standard deviation
+mean_T_10 = np.mean(T_10_values)
+std_T = np.std(T_10_values)
 
-# Calculate the mean time and standard deviation for 10 oscillations
-mean_time_10 = np.mean(times_10_oscillations)
-std_time_10 = np.std(times_10_oscillations)
+# Uncertainty in time for 10 oscillations (ΔT_10)
+delta_T_10 = std_T / np.sqrt(n)
 
-# Calculate the uncertainty in the mean time
-delta_T_10 = std_time_10 / np.sqrt(n)
-
-# Calculate the period of a single oscillation
-T = mean_time_10 / 10
+# Step 2: Calculate the period (T) for one oscillation
+T = mean_T_10 / 10
 delta_T = delta_T_10 / 10
 
-# Calculate gravitational acceleration using the formula
-g = (4 * np.pi**2 * L) / T**2
+# Step 3: Calculate gravitational acceleration (g)
+g = (4 * pi**2 * L) / (T**2)
 
-# Propagate uncertainties to calculate uncertainty in g
+# Step 4: Propagate uncertainties in g
 delta_g = g * np.sqrt((delta_L / L)**2 + (2 * delta_T / T)**2)
 
-# Tabulated data
+# Create a simpler DataFrame to display the results
 data = {
-    'Measurement #': np.arange(1, n+1),
-    'Time for 10 Oscillations (s)': times_10_oscillations,
-    'Mean Time for 10 Oscillations (s)': mean_time_10,
-    'Standard Deviation of Time (s)': std_time_10,
-    'Uncertainty in Time for 10 Oscillations (s)': delta_T_10
+    'Measured Time for 10 Oscillations (T_10) [s]': T_10_values,
+    'Mean Time (T_mean) [s]': np.repeat(mean_T_10, n),
+    'Period (T) [s]': np.repeat(T, n),
+    'Uncertainty in Time (ΔT) [s]': np.repeat(delta_T, n),
 }
 
+# Convert the data into a DataFrame
 df = pd.DataFrame(data)
 
+# Add final calculations for g and uncertainty in g
+df.loc['Final', :] = ['-', mean_T_10, T, delta_T]
+
 # Display the table
-print("Tabulated Data for Pendulum Measurements:")
 print(df)
-
-# Display the calculated values for g and uncertainty
-print("\nCalculated Values:")
-print(f"Mean Time for 10 Oscillations: {mean_time_10:.4f} s")
-print(f"Period of One Oscillation: {T:.4f} s")
-print(f"Calculated g: {g:.4f} m/s^2")
-print(f"Uncertainty in g: {delta_g:.4f} m/s^2")
-
-# Compare with true value of g
-print(f"\nDifference from true value of g ({true_gravity} m/s^2): {abs(g - true_gravity):.4f} m/s^2")
-
+print("\nCalculated Gravitational Acceleration (g): {:.4f} m/s²".format(g))
+print("Uncertainty in g (Δg): {:.4f} m/s²".format(delta_g))

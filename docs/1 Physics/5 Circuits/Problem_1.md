@@ -19,7 +19,7 @@ Demonstrates how graph theory can streamline calculations, especially for compli
 
 ---
 
---
+
 
 ---
 
@@ -32,14 +32,10 @@ Demonstrates how graph theory can streamline calculations, especially for compli
 ### Series and Parallel Combinations:
 
 **Series:** Two resistors are in series if they are connected end-to-end with no intermediate junctions. Their combined resistance is the sum:  
-\[
 R_{\text{eq}} = R_1 + R_2
-\]
 
 **Parallel:** Two resistors are in parallel if both are connected between the same two nodes. The combined resistance is:  
-\[
 \frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2}
-\]
 
 
 ### Graph Simplification:
@@ -101,12 +97,12 @@ We check for pairs of resistors connected in parallel by checking if they are bo
 ### Iterative Process:
 After each reduction, the graph is updated, and the algorithm rechecks the graph for possible new reductions. This process continues until we are left with a single equivalent resistance.
 
----
+
 
 ## Handling Complex Circuits:
 The algorithm simplifies the circuit step-by-step. In complex circuits, you will need to detect combinations that might not be immediately obvious. This requires a combination of **depth-first search (DFS)** or **breadth-first search (BFS)** to explore and detect these patterns.
 
----
+
 
 ## Efficiency and Improvements:
 
