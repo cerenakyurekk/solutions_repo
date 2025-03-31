@@ -137,7 +137,6 @@
 <h3 id="purpose">Purpose:</h3>
 <p>Demonstrates how graph theory can streamline calculations, especially for complicated networks.</p>
 <hr/>
-<p>--</p>
 <hr/>
 <h2 id="algorithm-description">Algorithm Description</h2>
 <h3 id="graph-representation">Graph Representation:</h3>
@@ -147,13 +146,9 @@
 </ul>
 <h3 id="series-and-parallel-combinations">Series and Parallel Combinations:</h3>
 <p><strong>Series:</strong> Two resistors are in series if they are connected end-to-end with no intermediate junctions. Their combined resistance is the sum:<br/>
-[
-R_{\text{eq}} = R_1 + R_2
-]</p>
+R_{\text{eq}} = R_1 + R_2</p>
 <p><strong>Parallel:</strong> Two resistors are in parallel if both are connected between the same two nodes. The combined resistance is:<br/>
-[
-\frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2}
-]</p>
+\frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2}</p>
 <h3 id="graph-simplification">Graph Simplification:</h3>
 <ul>
 <li><strong>Series Reduction</strong>: Replace two resistors in series with their sum.</li>
@@ -213,12 +208,12 @@ We check for pairs of resistors connected in parallel by checking if they are bo
 ### Iterative Process:
 After each reduction, the graph is updated, and the algorithm rechecks the graph for possible new reductions. This process continues until we are left with a single equivalent resistance.
 
----
+
 
 ## Handling Complex Circuits:
 The algorithm simplifies the circuit step-by-step. In complex circuits, you will need to detect combinations that might not be immediately obvious. This requires a combination of **depth-first search (DFS)** or **breadth-first search (BFS)** to explore and detect these patterns.
 
----
+
 
 ## Efficiency and Improvements:
 
