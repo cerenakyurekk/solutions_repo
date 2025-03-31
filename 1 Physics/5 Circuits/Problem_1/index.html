@@ -137,39 +137,7 @@
 <h3 id="purpose">Purpose:</h3>
 <p>Demonstrates how graph theory can streamline calculations, especially for complicated networks.</p>
 <hr/>
-<h2 id="task-options">Task Options:</h2>
-<h3 id="simplified-task">Simplified Task:</h3>
-<h4 id="objective">Objective:</h4>
-<p>Describe the algorithm for calculating equivalent resistance using graph theory.</p>
-<h4 id="focus">Focus:</h4>
-<ul>
-<li>Identify series and parallel connections.</li>
-<li>Iteratively reduce the graph to a single equivalent resistance.</li>
-</ul>
-<h4 id="pseudocode">Pseudocode:</h4>
-<p>Provide pseudocode, explaining how the algorithm handles nested resistor combinations.</p>
-<hr/>
-<h3 id="advanced-task">Advanced Task:</h3>
-<h4 id="objective_1">Objective:</h4>
-<p>Implement the algorithm in a programming language.</p>
-<h4 id="key-features">Key Features:</h4>
-<ul>
-<li>Handle arbitrary resistor configurations.</li>
-<li>Output the final equivalent resistance.</li>
-<li>Test with various examples.</li>
-</ul>
-<h4 id="deliverables">Deliverables:</h4>
-<ul>
-<li>Full implementation.</li>
-<li>Examples.</li>
-<li>Efficiency analysis and possible improvements.</li>
-</ul>
-<hr/>
-<h2 id="hints-and-resources">Hints and Resources:</h2>
-<ul>
-<li><strong>Graph simplification</strong>: Focus on detecting series and parallel combinations using graph traversal methods (DFS, BFS).</li>
-<li><strong>Tools</strong>: Libraries like <code>networkx</code> in Python can help with graph manipulation.</li>
-</ul>
+<p>--</p>
 <hr/>
 <h2 id="algorithm-description">Algorithm Description</h2>
 <h3 id="graph-representation">Graph Representation:</h3>
@@ -178,20 +146,14 @@
 <li><strong>Edges</strong> represent resistors, with weights equal to their resistance values.</li>
 </ul>
 <h3 id="series-and-parallel-combinations">Series and Parallel Combinations:</h3>
-<ul>
-<li>
-<p><strong>Series</strong>: Two resistors are in series if they are connected end-to-end with no intermediate junctions. Their combined resistance is the sum:
-  [
-  R_{\text{eq}} = R_1 + R_2
-  ]</p>
-</li>
-<li>
-<p><strong>Parallel</strong>: Two resistors are in parallel if both are connected between the same two nodes. The combined resistance is:
-  [
-  \frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2}
-  ]</p>
-</li>
-</ul>
+<p><strong>Series:</strong> Two resistors are in series if they are connected end-to-end with no intermediate junctions. Their combined resistance is the sum:<br/>
+[
+R_{\text{eq}} = R_1 + R_2
+]</p>
+<p><strong>Parallel:</strong> Two resistors are in parallel if both are connected between the same two nodes. The combined resistance is:<br/>
+[
+\frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2}
+]</p>
 <h3 id="graph-simplification">Graph Simplification:</h3>
 <ul>
 <li><strong>Series Reduction</strong>: Replace two resistors in series with their sum.</li>
@@ -205,7 +167,7 @@
 <ul>
 <li>After each reduction, new series and parallel combinations may emerge. The algorithm should re-check the graph after each reduction.</li>
 </ul>
-<h2 id="pseudocode_1">Pseudocode:</h2>
+<h2 id="pseudocode">Pseudocode:</h2>
 <pre><code class="language-python">def equivalent_resistance(circuit_graph):
     # Step 1: Initialize a graph G
     G = circuit_graph
