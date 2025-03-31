@@ -120,6 +120,55 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="exploring-the-central-limit-theorem-through-simulations">Exploring the Central Limit Theorem through Simulations</h1>
+<h2 id="motivation">Motivation</h2>
+<p>The Central Limit Theorem (CLT) is a cornerstone of probability and statistics, stating that the sampling distribution of the sample mean approaches a normal distribution as the sample size increases, regardless of the population’s original distribution. Simulations provide an intuitive and hands-on way to observe this phenomenon in action.</p>
+<h2 id="task-overview">Task Overview</h2>
+<h3 id="1-simulating-sampling-distributions">1. Simulating Sampling Distributions</h3>
+<h4 id="step-1-choose-populations">Step 1: Choose Populations</h4>
+<p>We will simulate three different types of population distributions:</p>
+<ol>
+<li><strong>Uniform Distribution</strong>: Every number within a given range has an equal chance of being selected.</li>
+<li><strong>Exponential Distribution</strong>: The population follows an exponential decay pattern, commonly used in scenarios like waiting times.</li>
+<li><strong>Binomial Distribution</strong>: A distribution representing the number of successes in a fixed number of independent trials, such as the number of heads in a series of coin flips.</li>
+</ol>
+<h4 id="step-2-generate-a-large-population-dataset">Step 2: Generate a Large Population Dataset</h4>
+<p>For each of the above distributions, we will generate a large dataset that represents our population. This large dataset will then be used to draw random samples for our simulation.</p>
+<h3 id="2-sampling-and-visualization">2. Sampling and Visualization</h3>
+<h4 id="step-1-sampling">Step 1: Sampling</h4>
+<p>For each distribution, we will:
+1. Randomly sample data from the population with different sample sizes (5, 10, 30, 50).
+2. Calculate the sample mean for each sample drawn.
+3. Repeat the sampling process multiple times (e.g., 1,000 times) to create a distribution of sample means.</p>
+<h4 id="step-2-visualizing-the-sampling-distribution">Step 2: Visualizing the Sampling Distribution</h4>
+<p>We will plot histograms of the sample means for each sample size and observe the convergence to a normal distribution. For larger sample sizes, we expect the histogram to look more normal, in line with the Central Limit Theorem.</p>
+<h3 id="3-parameter-exploration">3. Parameter Exploration</h3>
+<p>We'll investigate the following factors:
+1. <strong>Effect of Population Shape</strong>: How does the shape of the original population (uniform, exponential, binomial) affect the sampling distribution's convergence to normality?
+2. <strong>Effect of Sample Size</strong>: As the sample size increases, how does the sampling distribution of the sample mean approach normality?
+3. <strong>Variance</strong>: We'll observe how the variance of the population affects the spread of the sampling distribution.</p>
+<h3 id="4-practical-applications">4. Practical Applications</h3>
+<p>Reflecting on the significance of CLT:
+- <strong>Estimating Population Parameters</strong>: Understanding how sample means approximate population means as sample size grows.
+- <strong>Quality Control</strong>: In manufacturing, the CLT helps in determining acceptable ranges for product features and predicting defects.
+- <strong>Financial Models</strong>: CLT is crucial for understanding risk and predicting stock prices and returns.</p>
+<h3 id="5-deliverables">5. Deliverables</h3>
+<ul>
+<li><strong>Markdown Document</strong>: Documenting the task, explaining the CLT, describing the simulation process, and interpreting the results.</li>
+<li><strong>Python Scripts/Notebooks</strong>: A script or notebook that performs the simulations and visualizations.</li>
+<li><strong>Plots</strong>: Histograms showing how the sampling distributions of the sample mean converge to normal as sample size increases.</li>
+</ul>
+<h3 id="key-insights-from-simulations">Key Insights from Simulations:</h3>
+<ul>
+<li><strong>Uniform Distribution</strong>: As sample size increases, the distribution of the sample mean will approach a normal distribution, even though the uniform distribution is not normal.</li>
+<li><strong>Exponential Distribution</strong>: Even though the exponential distribution is skewed, the sampling distribution of the mean will approach normality as the sample size increases.</li>
+<li><strong>Binomial Distribution</strong>: For large sample sizes, the binomial distribution (which is discrete) will also approximate a normal distribution, as per the CLT.</li>
+</ul>
+<p>By running the simulations and observing the results, we can better understand how the CLT works and how the sample size and population shape affect the convergence to a normal distribution.</p>
+<pre><code></code></pre>
+<p><img alt="alt text" src="../image10.png"/></p>
+<pre><code></code></pre>
+<p><img alt="alt text" src="../image12.png"/></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">

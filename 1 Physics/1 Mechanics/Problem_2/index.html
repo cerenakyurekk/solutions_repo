@@ -120,6 +120,109 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-2">Problem 2</h1>
+<h1 id="investigating-the-dynamics-of-a-forced-damped-pendulum">Investigating the Dynamics of a Forced Damped Pendulum</h1>
+<h2 id="motivation">Motivation</h2>
+<p>The forced damped pendulum is a captivating example of a physical system with intricate behavior resulting from the interplay of damping, restoring forces, and external driving forces. By introducing both damping and external periodic forcing, the system demonstrates a transition from simple harmonic motion to a rich spectrum of dynamics, including resonance, chaos, and quasiperiodic behavior. These phenomena serve as a foundation for understanding complex real-world systems, such as driven oscillators, climate systems, and mechanical structures under periodic stress.</p>
+<p>Adding forcing introduces new parameters, such as the amplitude and frequency of the external force, which significantly affect the pendulum's behavior. By systematically varying these parameters, a diverse class of solutions can be observed, including synchronized oscillations, chaotic motion, and resonance phenomena. These behaviors not only highlight fundamental physics principles but also provide insights into engineering applications such as energy harvesting, vibration isolation, and mechanical resonance.</p>
+<h2 id="task">Task</h2>
+<h3 id="1-theoretical-foundation">1. Theoretical Foundation</h3>
+<ul>
+<li>Start with the differential equation governing the motion of a forced damped pendulum:</li>
+</ul>
+<p>[
+  \frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \frac{g}{L} \sin\theta = A \cos(\omega t)
+  ]</p>
+<ul>
+<li>Derive the approximate solutions for small-angle oscillations.</li>
+<li>Explore resonance conditions and their implications for the system's energy.</li>
+</ul>
+<h3 id="2-analysis-of-dynamics">2. Analysis of Dynamics</h3>
+<ul>
+<li>Investigate how the damping coefficient, driving amplitude, and driving frequency influence the motion of the pendulum.</li>
+<li>Examine the transition between regular and chaotic motion and their physical interpretations.</li>
+</ul>
+<h3 id="3-practical-applications">3. Practical Applications</h3>
+<ul>
+<li>Discuss real-world scenarios where the forced damped pendulum model applies, such as in energy harvesting devices, suspension bridges, and oscillating circuits.</li>
+</ul>
+<h3 id="4-implementation">4. Implementation</h3>
+<ul>
+<li>Create a computational model to simulate the motion of a forced damped pendulum.</li>
+<li>Visualize the behavior under various damping, driving force, and initial conditions.</li>
+<li>Plot phase diagrams and Poincaré sections to illustrate transitions to chaos.</li>
+</ul>
+<h2 id="solution-approach">Solution Approach</h2>
+<h3 id="1-small-angle-approximation">1. Small-Angle Approximation</h3>
+<p>For small angles (<span class="arithmatex">\( \theta \approx 0 \)</span>), we approximate <span class="arithmatex">\( \sin\theta \approx \theta \)</span>, simplifying the equation to:</p>
+<div class="arithmatex">\[
+\frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \frac{g}{L} \theta = A \cos(\omega t)
+\]</div>
+<p>This is a linear second-order differential equation with a known analytical solution in the form:</p>
+<div class="arithmatex">\[
+\theta(t) = C_1 e^{\lambda_1 t} + C_2 e^{\lambda_2 t} + \theta_p(t)
+\]</div>
+<p>where:
+- <span class="arithmatex">\( \lambda_1, \lambda_2 \)</span> are roots of the characteristic equation.
+- <span class="arithmatex">\( \theta_p(t) \)</span> is the particular solution due to external forcing.
+- The behavior depends on whether the system is underdamped, critically damped, or overdamped.</p>
+<h3 id="2-numerical-solution-for-arbitrary-angles">2. Numerical Solution for Arbitrary Angles</h3>
+<p>For larger angles where <span class="arithmatex">\( \sin\theta \)</span> cannot be approximated by <span class="arithmatex">\( \theta \)</span>, we solve the equation numerically using the Runge-Kutta method.</p>
+<h3 id="3-python-implementation">3. Python Implementation</h3>
+<p>We'll integrate the system using the <strong>Runge-Kutta</strong> method for arbitrary angles.</p>
+<h4 id="python-code">Python Code:</h4>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Parameters
+g = 9.81  # Gravity (m/s^2)
+L = 1.0   # Length of the pendulum (m)
+b = 0.5   # Damping coefficient
+A = 1.2   # Driving force amplitude
+omega = 2.0  # Driving force frequency
+
+# Differential equations
+def pendulum(t, y):
+    theta, omega_dot = y
+    dtheta_dt = omega_dot
+    domega_dt = -b * omega_dot - (g / L) * np.sin(theta) + A * np.cos(omega * t)
+    return [dtheta_dt, domega_dt]
+
+# Time span and initial conditions
+t_span = (0, 50)
+t_eval = np.linspace(*t_span, 1000)
+y0 = [0.1, 0]  # Initial angle and velocity
+
+# Solve the system
+sol = solve_ivp(pendulum, t_span, y0, t_eval=t_eval, method='RK45')
+
+# Plot results
+plt.figure(figsize=(10, 5))
+plt.plot(sol.t, sol.y[0], label='Theta (rad)')
+plt.xlabel('Time (s)')
+plt.ylabel('Angle (rad)')
+plt.title('Forced Damped Pendulum')
+plt.legend()
+plt.grid()
+plt.show()
+</code></pre>
+<p><img alt="alt text" src="../image2.png"/></p>
+<h2 id="deliverables">Deliverables</h2>
+<ul>
+<li>A Markdown document with a Python script or notebook implementing the simulations.</li>
+<li>A detailed explanation of the general solutions for the forced damped pendulum.</li>
+<li>Graphical representations of the motion for different damping coefficients, driving amplitudes, and driving frequencies, including resonance and chaotic behavior.</li>
+<li>A discussion on the limitations of the model and potential extensions, such as introducing nonlinear damping or non-periodic driving forces.</li>
+<li>Phase portraits, Poincaré sections, and bifurcation diagrams to analyze transitions to complex dynamics.</li>
+</ul>
+<h2 id="hints-and-resources">Hints and Resources</h2>
+<ul>
+<li>For small angles, approximate <span class="arithmatex">\( \sin \theta \approx \theta \)</span> to simplify the differential equation.</li>
+<li>Employ numerical techniques (e.g., Runge-Kutta methods) for exploring the dynamics beyond the small-angle approximation.</li>
+<li>Relate the forced damped pendulum to analogous systems in other fields, such as electrical circuits (driven RLC circuits) or biomechanics (human gait).</li>
+<li>Utilize software tools like Python for simulations and visualizations.</li>
+</ul>
+<p>This task bridges theoretical analysis with computational exploration, fostering a deeper understanding of forced and damped oscillatory phenomena and their implications in both physics and engineering.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
