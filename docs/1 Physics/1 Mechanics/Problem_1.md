@@ -1,137 +1,175 @@
+
+# Problem 1
+
 # Investigating the Range as a Function of the Angle of Projection
 
----
+## Theoretical Foundation
 
-## 1. Theoretical Foundation:
+We begin by considering the motion of a projectile under the influence of gravity. The motion in both the horizontal and vertical directions can be described using the following equations:
 
-Projectile motion refers to the motion of an object that is projected into the air under the influence of gravity, without any air resistance. The basic principles of projectile motion can be derived from Newton's second law and the kinematic equations.
+### Equations of Motion
 
-For simplicity, let's assume the projectile is launched from the origin \((x = 0, y = 0)\), with an initial velocity \(v_0\) at an angle \(\theta\) from the horizontal. The only force acting on the projectile is gravity, which accelerates the object downward with an acceleration of \(g = 9.81 \, m/s^2\) (on Earth).
+For a projectile launched with an initial velocity \( v_0 \) at an angle \( \theta \) to the horizontal, we can break the velocity into horizontal and vertical components:
 
-### Equations of Motion:
+- Horizontal velocity component: 
+  $$ v_{0x} = v_0 \cos(\theta) $$
 
-We can break the motion into horizontal and vertical components. 
+- Vertical velocity component: 
+  $$ v_{0y} = v_0 \sin(\theta) $$
 
-#### Horizontal motion (no acceleration):
-\[
-x(t) = v_0 \cos(\theta) \cdot t
-\]
-where \(x(t)\) is the horizontal displacement at time \(t\), \(v_0\) is the initial velocity, and \(\theta\) is the launch angle.
+The equations of motion in the horizontal (\(x\)) and vertical (\(y\)) directions are given by:
 
-#### Vertical motion (under acceleration due to gravity):
-\[
-y(t) = v_0 \sin(\theta) \cdot t - \frac{1}{2} g t^2
-\]
-where \(y(t)\) is the vertical displacement at time \(t\), and \(g\) is the gravitational acceleration.
+1. Horizontal motion:
+   $$ x(t) = v_{0x} t = v_0 \cos(\theta) t $$
 
-The time of flight \(T\) (the time it takes for the projectile to hit the ground) can be found by setting \(y(T) = 0\). Using the vertical motion equation:
+2. Vertical motion:
+   $$ y(t) = v_{0y} t - \frac{1}{2} g t^2 = v_0 \sin(\theta) t - \frac{1}{2} g t^2 $$
 
-\[
-0 = v_0 \sin(\theta) \cdot T - \frac{1}{2} g T^2
-\]
+Where:
+- \( g \) is the acceleration due to gravity
+- \( t \) is the time of flight
 
-Solve for \(T\):
+### Time of Flight
 
-\[
-T = \frac{2 v_0 \sin(\theta)}{g}
-\]
+To find the time of flight \( T \), we set the vertical displacement \( y(t) \) equal to zero when the projectile lands:
 
-#### Range (R):
-The range of the projectile is the horizontal distance it travels before hitting the ground. Using the time of flight \(T\) from above, the range \(R\) is:
+$$ 0 = v_0 \sin(\theta) T - \frac{1}{2} g T^2 $$
 
-\[
-R = x(T) = v_0 \cos(\theta) \cdot T
-\]
+Solving for \( T \), we get:
 
-Substituting for \(T\):
+$$ T = \frac{2 v_0 \sin(\theta)}{g} $$
 
-\[
-R = \frac{v_0^2 \sin(2\theta)}{g}
-\]
+### Range of the Projectile
 
-This equation is fundamental to understanding how the range of a projectile depends on the launch angle. The range is maximized when \(\sin(2\theta) = 1\), which occurs at \(\theta = 45^\circ\).
+The range \( R \) is the horizontal distance the projectile travels before landing. Using the time of flight \( T \), the range can be determined from the horizontal motion equation:
 
----
+$$ R = x(T) = v_0 \cos(\theta) T $$
 
-## 2. Analysis of the Range:
+Substituting the expression for \( T \):
 
-### Dependence of Range on the Launch Angle:
-The range \(R\) as a function of the launch angle \(\theta\) is given by:
+$$ R = v_0 \cos(\theta) \cdot \frac{2 v_0 \sin(\theta)}{g} $$
 
-\[
-R(\theta) = \frac{v_0^2 \sin(2\theta)}{g}
-\]
+Simplifying the expression for the range:
 
-- **For small angles** (\(\theta \to 0\)), the sine term \(\sin(2\theta) \to 0\), so the range is very short.
-- **At \(\theta = 45^\circ\)**, \(\sin(2\theta)\) reaches its maximum value of 1, giving the maximum range for a given initial velocity.
-- **For large angles** (\(\theta \to 90^\circ\)), the sine term again approaches 0, reducing the range.
+$$ R = \frac{v_0^2 \sin(2\theta)}{g} $$
 
-### Influence of Other Parameters:
+### Variations with Initial Conditions
 
-- **Initial Velocity (\(v_0\))**: The range is proportional to the square of the initial velocity. A higher launch velocity increases the range.
-  
-- **Gravitational Acceleration (\(g\))**: The range is inversely proportional to \(g\). In regions with lower gravitational acceleration (such as the Moon or Mars), the range for the same initial velocity will be larger than on Earth.
+As the angle \( \theta \) changes, the range of the projectile also changes. The sine function \( \sin(2\theta) \) shows how the range is maximized at an angle of \( 45^\circ \), where the value of \( \sin(2\theta) \) is 1.
 
-- **Launch Height**: The equations above assume the projectile is launched from the ground. If the launch height is above the ground (such as from a cliff), the projectile will stay in the air longer, increasing the range.
+Thus, the range is a function of the launch angle  $$ \theta $$ , initial velocity $$  v_0 $$ , and gravity \( g \). Variations in any of these initial conditions lead to a family of solutions for the range, allowing us to analyze how changes in conditions affect projectile motion.
 
----
-
-## 3. Practical Applications:
-
-This basic model of projectile motion can be extended to various real-world scenarios. Some examples include:
-
-- **Sports**: In sports like soccer, basketball, or golf, athletes often aim to maximize the range of their projectiles (e.g., a soccer ball or golf ball). The optimal launch angle is approximately 45 degrees, though factors like air resistance and spin affect the actual range.
-  
-- **Engineering**: Engineers designing missile trajectories must consider not only the angle of launch but also the effects of wind resistance, aerodynamic forces, and changes in the Earth's curvature.
-
-- **Astrophysics**: In space exploration, the launch angle of rockets can affect the trajectory and distance traveled, and the equations may need to be adapted to account for the vacuum of space and gravitational influences from other celestial bodies.
-
-#### Uneven Terrain & Air Resistance:
-The basic model assumes a flat Earth and neglects air resistance. In real-world applications, these factors can significantly alter the trajectory:
-
-- **Uneven Terrain**: If the projectile is launched on uneven terrain (e.g., from a hill), the initial height must be taken into account, which changes the equations for time of flight and range.
-  
-- **Air Resistance**: The presence of air resistance complicates the equations, as the drag force acting on the projectile depends on its velocity, shape, and the properties of the air. This would result in a non-parabolic trajectory.
-
----
-
-## 4. Implementation:
-
-Now let's implement a Python simulation to visualize the range of a projectile as a function of the launch angle, considering different initial velocities.
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Constants
-g = 9.81  # gravitational acceleration (m/s^2)
-
-def range_of_projectile(v0, angle):
-    """
-    Calculate the range of a projectile launched with an initial velocity `v0` at an angle `angle`.
-    """
-    angle_rad = np.radians(angle)
-    return (v0 ** 2 * np.sin(2 * angle_rad)) / g
-
-# Parameters
-v0_values = [10, 20, 30]  # different initial velocities (m/s)
-angles = np.linspace(0, 90, 100)  # angles from 0 to 90 degrees
-
-# Plotting
-plt.figure(figsize=(10, 6))
-
-for v0 in v0_values:
-    ranges = [range_of_projectile(v0, angle) for angle in angles]
-    plt.plot(angles, ranges, label=f'v0 = {v0} m/s')
-
-plt.title("Range of a Projectile as a Function of Launch Angle")
-plt.xlabel("Launch Angle (degrees)")
-plt.ylabel("Range (meters)")
-plt.legend()
-plt.grid(True)
-plt.show()
-
-
-
-```
 ![alt text](image1.png)
+
+## Analysis of the Range:
+
+# Investigating the Range as a Function of the Angle of Projection
+
+## Analysis of the Range
+
+### Dependence of Range on the Angle of Projection
+
+From the previous derivation, we know the range \( R \) of the projectile is given by the equation:
+
+$$ R = \frac{v_0^2 \sin(2\theta)}{g} $$
+
+Where:
+- \( v_0 \) is the initial velocity
+- \( \theta \) is the angle of projection
+- \( g \) is the acceleration due to gravity
+
+We can analyze the behavior of the range as a function of the angle of projection \( \theta \).
+
+The term \( \sin(2\theta) \) in the range equation indicates that the range varies as a sinusoidal function of \( 2\theta \). The sine function reaches its maximum value of 1 when \( 2\theta = 90^\circ \), i.e., when $$\theta = 45^\circ $$. Therefore, the maximum horizontal range is achieved when the angle of projection is $$45^\circ $$.
+
+The relationship between the range and the angle of projection is symmetric. For angles greater than $$45^\circ $$, the range decreases as the sine function decreases after reaching its maximum. For angles less than $$ 45^\circ $$, the range also decreases as the angle moves further away from $$45^\circ $$.
+
+Thus, the range is maximized when $$ \theta = 45^\circ $$, and for other angles, the range decreases symmetrically on either side of this optimal angle.
+
+![alt text](image22.png)
+
+
+### Influence of Initial Velocity
+
+The range $$ R $$ is directly proportional to the square of the initial velocity $$v_0 $$:
+
+$$ R \propto v_0^2 $$
+
+This means that if the initial velocity $$v_0 $$ is increased, the range of the projectile increases as well. For example, doubling the initial velocity would quadruple the range, assuming the angle of projection and gravitational acceleration remain constant.
+
+### Influence of Gravitational Acceleration
+
+The range $$ R $$ is inversely proportional to the acceleration due to gravity $$ g $$:
+
+$$ R \propto \frac{1}{g} $$
+
+This means that in regions with lower gravitational acceleration (e.g., on the Moon compared to Earth), the range of the projectile would be greater. If the gravitational acceleration $$ g $$ is decreased, the range increases, assuming all other factors remain constant.
+
+### Combined Effect of Parameters
+
+The horizontal range depends on the combined effects of the initial velocity, the angle of projection, and gravitational acceleration. The optimal angle for the maximum range is $$45^\circ $$, but the exact range achieved also depends on how large the initial velocity $$ v_0 $$ is and how small the gravitational acceleration $$ g $$ is. 
+
+In summary:
+- The range is maximized at $$ \theta = 45^\circ $$ .
+- A higher initial velocity increases the range.
+- A lower gravitational acceleration increases the range.
+- 
+![alt text](image23.png)
+
+## Practical Applications
+
+### Projectiles on Uneven Terrain
+
+The model derived for projectile motion assumes a flat horizontal surface, where the projectile lands at the same height from which it was launched. However, in real-world scenarios, projectiles are often launched on uneven terrain, such as hilly or sloped surfaces. In these cases, the range calculation becomes more complex.
+
+To adapt the model for uneven terrain, we need to account for the change in height between the launch point and the landing point. The range equation must be modified to include the initial and final vertical displacements. The general form of the equation in the presence of a slope with angle $$ \alpha $$ is:
+
+$$ y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 $$
+
+Where the final vertical displacement $$ y(t) $$ will equal the slope height $$ h $$, and we would solve for $$ t $$ and the corresponding range.
+
+In this case, numerical methods or simulations are often employed to solve for the time of flight and range, as the equation becomes nonlinear due to the varying terrain height.
+
+### Air Resistance
+
+In reality, air resistance plays a significant role in the motion of projectiles, especially at high velocities. Air resistance acts against the motion of the projectile, slowing it down in both the horizontal and vertical directions. This introduces a non-conservative force, and the equations of motion must be modified accordingly.
+
+The force due to air resistance is typically modeled as:
+
+$$ F_{\text{drag}} = \frac{1}{2} C_d \rho A v^2 $$
+
+Where:
+
+ $$C_d $$
+
+ is the drag coefficient (dependent on the shape of the object),
+
+$$ rho $$ 
+
+ is the air density,
+ $$ a $$
+
+ is the cross-sectional area of the projectile,
+ $$ v $$
+
+ is the velocity of the projectile.
+
+To account for air resistance, the motion equations must be solved using the following system of differential equations:
+
+1. Horizontal direction: 
+   $$ m \frac{d^2 x}{dt^2} = -\frac{1}{2} C_d \rho A v \frac{dx}{dt} $$
+
+2. Vertical direction:
+   $$ m \frac{d^2 y}{dt^2} = -mg - \frac{1}{2} C_d \rho A v \frac{dy}{dt} $$
+
+Here, $$ v = \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} $$ represents the velocity magnitude.
+
+Incorporating air resistance requires numerical methods, such as Euler's method or Runge-Kutta methods, to solve these coupled differential equations. This makes the problem significantly more complex but provides a more accurate model of projectile motion in the real world.
+
+### Practical Considerations
+
+- **Accuracy of the Model**: In practical applications, adjustments for air resistance and terrain are crucial to making accurate predictions. In engineering, for example, understanding these factors is essential for designing projectiles, missiles, or sports equipment.
+- **Applications in Sports**: In sports such as basketball, soccer, or golf, understanding projectile motion with air resistance is crucial to predicting ball trajectories and optimizing performance.
+- **Military and Aerospace Engineering**: The design of artillery, missiles, and space missions often requires accounting for air resistance and uneven terrain, especially when the projectiles travel at high speeds and long distances.
+
+![alt text](image24.png)
