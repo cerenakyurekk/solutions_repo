@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 1 - Physics and Mathematics</title>
+<title>Central Limit Theorem and Sampling Distributions - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 1";
+        var mkdocs_page_name = "Central Limit Theorem and Sampling Distributions";
         var mkdocs_page_input_path = "1 Physics/6 Statistics/Problem_1.md";
         var mkdocs_page_url = null;
       </script>
@@ -82,8 +82,10 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal current">6 Statistics</a>
 <ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Central Limit Theorem and Sampling Distributions</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#core-idea-of-the-clt">Core Idea of the CLT</a>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Problem_2/">Problem 2</a>
@@ -111,7 +113,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">6 Statistics</li>
-<li class="breadcrumb-item active">Problem 1</li>
+<li class="breadcrumb-item active">Central Limit Theorem and Sampling Distributions</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -119,125 +121,90 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-1">Problem 1</h1>
-<h1 id="exploring-the-central-limit-theorem-through-simulations">Exploring the Central Limit Theorem through Simulations</h1>
-<h2 id="motivation">Motivation</h2>
-<p>The <strong>Central Limit Theorem (CLT)</strong> states that the sampling distribution of the sample mean will approach a normal distribution as the sample size increases, regardless of the original population distribution. This fundamental concept in statistics allows us to make inferences about population parameters using sample data.</p>
-<h2 id="objective">Objective</h2>
-<p>The objective is to simulate and visualize the Central Limit Theorem (CLT) through different population distributions to observe how the sampling distribution of the sample mean converges to a normal distribution as the sample size increases.</p>
-<h2 id="task-breakdown">Task Breakdown</h2>
-<h3 id="1-simulating-sampling-distributions">1. Simulating Sampling Distributions</h3>
-<h4 id="population-distributions">Population Distributions:</h4>
-<p>Select several population distributions to simulate:
-1. <strong>Uniform Distribution</strong>: All values within a specified range have an equal probability of being chosen.
-2. <strong>Exponential Distribution</strong>: Follows an exponential decay pattern, commonly used to model waiting times.
-3. <strong>Binomial Distribution</strong>: Represents the number of successes in a fixed number of trials (e.g., number of heads in a series of coin flips).</p>
-<p><strong>Step 1</strong>: Generate a large dataset for each of these distributions to represent the population.</p>
-<h3 id="2-sampling-and-visualization">2. Sampling and Visualization</h3>
-<h4 id="sampling-process">Sampling Process:</h4>
-<ol>
-<li><strong>Random Sampling</strong>: Randomly sample from the generated population data.</li>
-<li><strong>Sample Mean Calculation</strong>: For each sample, calculate the sample mean.</li>
-<li><strong>Multiple Sampling</strong>: Repeat the sampling process multiple times (e.g., 1,000 repetitions) for different sample sizes (e.g., 5, 10, 30, 50).</li>
-</ol>
-<h4 id="visualization">Visualization:</h4>
+<h1 id="central-limit-theorem-and-sampling-distributions">Central Limit Theorem and Sampling Distributions</h1>
+<p>The <strong>Central Limit Theorem (CLT)</strong> states that the distribution of sample means approximates a normal distribution, even if the underlying population is not normal—as long as the sample size is sufficiently large. This phenomenon is crucial in statistics, enabling confident use of normal models in real-world problems.</p>
+<h2 id="core-idea-of-the-clt">Core Idea of the CLT</h2>
+<p>If we take repeated samples from any population and compute their means:</p>
 <ul>
-<li>Plot histograms of the sample means for each sample size.</li>
-<li>Observe the convergence to normality: As the sample size increases, the distribution of the sample means should approach a normal distribution.</li>
+<li>
+<p>The mean of the sampling distribution will approach the population mean <span class="arithmatex">\( \mu \)</span>.</p>
+</li>
+<li>
+<p>The spread (standard deviation) of the sample means becomes:</p>
+</li>
 </ul>
-<h3 id="3-parameter-exploration">3. Parameter Exploration</h3>
-<h4 id="exploration-of-factors">Exploration of Factors:</h4>
-<ol>
-<li><strong>Effect of Population Shape</strong>: Investigate how the shape of the original population (uniform, exponential, binomial) affects the convergence of the sampling distribution to normality.</li>
-<li><strong>Effect of Sample Size</strong>: Study how the sample size influences the convergence of the sampling distribution to a normal distribution.</li>
-<li><strong>Effect of Variance</strong>: Observe how the population variance affects the spread of the sampling distribution of the sample mean.</li>
-</ol>
-<h3 id="4-practical-applications">4. Practical Applications</h3>
-<h4 id="real-world-implications-of-the-central-limit-theorem">Real-World Implications of the Central Limit Theorem:</h4>
-<ol>
-<li><strong>Estimating Population Parameters</strong>: CLT helps in using sample means to approximate the population mean. As sample size increases, sample means become more accurate estimators of the population mean.</li>
-<li><strong>Quality Control</strong>: In manufacturing, the CLT allows for prediction and monitoring of product quality by sampling and analyzing sample data.</li>
-<li><strong>Financial Models</strong>: CLT is crucial for understanding risk in finance, helping to predict stock prices, returns, and other financial metrics by treating sample means as approximations of true population values.</li>
-</ol>
-<hr/>
-<p>By simulating different population distributions and observing the convergence of the sampling distribution of the sample mean to normality, we can deepen our understanding of the Central Limit Theorem and its significance in various fields, including statistics, quality control, and finance.</p>
-<pre><code class="language-python"># Importing necessary libraries
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-# Set random seed for reproducibility
-np.random.seed(42)
-
-# Population size
-population_size = 100000
-
-# 1. Uniform Distribution (Range from 0 to 10)
-uniform_population = np.random.uniform(low=0, high=10, size=population_size)
-
-# 2. Exponential Distribution (Scale parameter 2)
-exponential_population = np.random.exponential(scale=2, size=population_size)
-
-# 3. Binomial Distribution (10 trials, 0.5 probability of success)
-binomial_population = np.random.binomial(n=10, p=0.5, size=population_size)
-
-# Function to calculate sample means
-def sample_means(population, sample_size, n_samples):
-    """Returns a list of sample means from random samples of given size."""
-    sample_means = []
-    for _ in range(n_samples):
-        sample = np.random.choice(population, size=sample_size)
-        sample_means.append(np.mean(sample))
-    return sample_means
-
-# Function to plot the sampling distribution of sample means
-def plot_sampling_distribution(population, sample_sizes, n_samples=1000):
-    """Plots histograms of sample means for different sample sizes."""
-    plt.figure(figsize=(14, 10))
-
-    for i, sample_size in enumerate(sample_sizes):
-        sample_means_values = sample_means(population, sample_size, n_samples)
-        plt.subplot(2, 2, i + 1)
-        sns.histplot(sample_means_values, kde=True, stat="density", bins=30)
-        plt.title(f"Sample Size: {sample_size}")
-        plt.xlabel('Sample Mean')
-        plt.ylabel('Density')
-
-    plt.tight_layout()
-    plt.show()
-
-# Sample sizes to consider
-sample_sizes = [5, 10, 30, 50]
-
-# Visualize sampling distributions for each population
-print("Uniform Distribution Sampling Distributions:")
-plot_sampling_distribution(uniform_population, sample_sizes)
-
-print("Exponential Distribution Sampling Distributions:")
-plot_sampling_distribution(exponential_population, sample_sizes)
-
-print("Binomial Distribution Sampling Distributions:")
-plot_sampling_distribution(binomial_population, sample_sizes)
-
-# Function to calculate and print variance of sample means
-def variance_of_sample_means(population, sample_sizes, n_samples=1000):
-    """Calculates and prints the variance of sample means for different sample sizes."""
-    for sample_size in sample_sizes:
-        sample_means_values = sample_means(population, sample_size, n_samples)
-        print(f"Sample Size: {sample_size} -&gt; Variance of Sample Means: {np.var(sample_means_values)}")
-
-# Calculate and display variance for each population
-print("\nVariance of Sample Means for Uniform Distribution:")
-variance_of_sample_means(uniform_population, sample_sizes)
-
-print("\nVariance of Sample Means for Exponential Distribution:")
-variance_of_sample_means(exponential_population, sample_sizes)
-
-print("\nVariance of Sample Means for Binomial Distribution:")
-variance_of_sample_means(binomial_population, sample_sizes)
-
-</code></pre>
-<p><img alt="alt text" src="../image16.png"/></p>
+<p>[
+  \sigma_{\overline{x}} = \frac{\sigma}{\sqrt{n}}
+  ]</p>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\( \sigma \)</span> is the population standard deviation</li>
+<li><span class="arithmatex">\( n \)</span> is the sample size</li>
+</ul>
+<p>As <span class="arithmatex">\( n \to \infty \)</span>, the shape of the sampling distribution becomes increasingly bell-shaped (normal)—even if the population distribution is skewed or discrete.</p>
+<p><img alt="alt text" src="image40.png"/></p>
+<h1 id="how-clt-is-observed-through-simulation">How CLT Is Observed Through Simulation</h1>
+<p>Simulations help us visualize and confirm the Central Limit Theorem (CLT) using different populations and sample sizes.</p>
+<h2 id="1-define-population-distributions">1. Define Population Distributions</h2>
+<p>We simulate from a few common types:</p>
+<ul>
+<li>** Uniform Distribution**: Equal probability across all values.</li>
+<li>** Exponential Distribution**: Skewed right, with most values near zero.</li>
+<li>** Binomial Distribution**: Discrete outcomes, such as coin flips.</li>
+</ul>
+<p>From each, generate a large dataset (e.g., 10,000 points) to represent the population.</p>
+<h2 id="2-generate-sampling-distributions">2. Generate Sampling Distributions</h2>
+<p>For each distribution:</p>
+<ul>
+<li>Take repeated samples of size <span class="arithmatex">\( n = 5, 10, 30, 50 \)</span>.</li>
+<li>Compute the sample mean <span class="arithmatex">\( \bar{x} \)</span>.</li>
+<li>Repeat many times (e.g., 1000) to build a sampling distribution.</li>
+</ul>
+<p>These sampling distributions are then visualized using histograms.</p>
+<h2 id="3-mathematical-behavior-of-convergence">3. Mathematical Behavior of Convergence</h2>
+<p>Each sample mean <span class="arithmatex">\( \bar{x}_i \)</span> from a sample of size <span class="arithmatex">\( n \)</span> is:</p>
+<div class="arithmatex">\[
+\bar{x}_i = \frac{1}{n} \sum_{j=1}^{n} x_{ij}
+\]</div>
+<ul>
+<li>The mean of the sampling distribution:<br/>
+  [
+  E[\bar{X}] = \mu
+  ]</li>
+<li>The variance of the sampling distribution:<br/>
+  [
+  \text{Var}(\bar{X}) = \frac{\sigma^2}{n}
+  ]</li>
+<li>The distribution of <span class="arithmatex">\( \bar{X} \)</span> tends toward:<br/>
+  [
+  \bar{X} \sim N\left(\mu, \frac{\sigma^2}{n}\right)
+  ]
+  as <span class="arithmatex">\( n \)</span> increases.</li>
+</ul>
+<p><img alt="alt text" src="../image41.png"/></p>
+<h1 id="pattern-features">Pattern Features</h1>
+<ul>
+<li><strong>Skewed Start</strong>: Small sample sizes reflect the skew of the original population.</li>
+<li><strong>Symmetry Emerges</strong>: As sample size increases, the sampling distribution becomes more symmetric and normal.</li>
+<li><strong>Variance Shrinks</strong>: The spread (standard error) reduces with larger <span class="arithmatex">\( n \)</span>, clustering values around the mean.</li>
+</ul>
+<h1 id="visual-highlights-from-simulation">Visual Highlights from Simulation</h1>
+<p>Using code to simulate:</p>
+<ul>
+<li>Sample means from an exponential distribution still produce a normal-looking histogram for <span class="arithmatex">\( n \geq 30 \)</span>.</li>
+<li>Even when the original data is skewed or jagged, the means smooth out.</li>
+</ul>
+<p>This aligns beautifully with CLT predictions.</p>
+<h1 id="applications-and-insights">Applications and Insights</h1>
+<p>Understanding the Central Limit Theorem (CLT) is crucial in:</p>
+<ul>
+<li>** Estimating population means from sample data**</li>
+<li>** Quality control and process improvement in manufacturing**</li>
+<li>** Polling and survey analysis**</li>
+<li>** Financial risk modeling and forecasting**</li>
+<li>** Simulated data modeling in generative design**</li>
+</ul>
+<p>The CLT provides a mathematical bridge from raw data to inferential statistics, showing how large samples "normalize" even chaotic sources.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
