@@ -1,11 +1,10 @@
-# Problem 2
-markdown
-# Estimating Pi using Monte Carlo Methods
+# Estimating Pi Using Monte Carlo Methods
 
 ## Motivation
-Monte Carlo simulations are a powerful class of computational techniques that use randomness to solve problems or estimate values. One of the most elegant applications of Monte Carlo methods is estimating the value of \( \pi \) through geometric probability. By randomly generating points and analyzing their positions relative to a geometric shape, we can approximate \( \pi \) in an intuitive and visually engaging way.
 
-This problem connects fundamental concepts of probability, geometry, and numerical computation. It also provides a gateway to understanding how randomness can be harnessed to solve complex problems in physics, finance, and computer science. The Monte Carlo approach to \( \pi \) estimation highlights the versatility and simplicity of this method while offering practical insights into convergence rates and computational efficiency.
+Monte Carlo simulations are a class of computational techniques that use randomness and statistical sampling to solve problems or estimate values. One of the most elegant and visually engaging applications of Monte Carlo methods is estimating the value of \( \pi \) through geometric probability. By randomly generating points and analyzing their positions relative to a geometric shape, we can approximate \( \pi \). This approach connects fundamental concepts of probability, geometry, and numerical computation, offering an intuitive way to explore the convergence properties of Monte Carlo methods and their practical application in various fields such as physics, finance, and computer science.
+
+The Monte Carlo method of estimating \( \pi \) exemplifies the power of randomness in computation, highlighting the versatility and simplicity of this technique. It also provides insight into how randomness can be harnessed to solve problems that would otherwise be computationally complex.
 
 ---
 
@@ -13,103 +12,78 @@ This problem connects fundamental concepts of probability, geometry, and numeric
 
 ### Part 1: Estimating \( \pi \) Using a Circle
 
-#### 1. Theoretical Foundation:
-- Explain how the ratio of points inside a circle to the total number of points in a square can be used to estimate \( \pi \).
-- Derive the formula:
-  \[
-  \pi \approx 4 \times \left(\frac{\text{points inside the circle}}{\text{total points}}\right)
-  \]
-  for a unit circle.
+#### 1. Theoretical Foundation
 
-#### 2. Simulation:
-- Generate random points in a 2D square bounding a unit circle.
-- Count the number of points falling inside the circle.
-- Estimate \( \pi \) based on the ratio of points inside the circle to the total points.
+The principle behind estimating \( \pi \) using a circle involves understanding the relationship between the area of a circle and a square. Consider a circle with a radius of 1 inscribed within a square, where the side length of the square is also 2 (since the circle’s diameter is 2). The area of the square is \( 2^2 = 4 \), and the area of the unit circle is \( \pi \times 1^2 = \pi \). The key idea is to use random points within the square and count how many of those points fall within the circle. 
 
-#### 3. Visualization:
-- Create a plot showing the randomly generated points, distinguishing those inside and outside the circle.
+Since the area of the circle and the square are related by \( \pi \) and the total area of the square, the ratio of the number of points inside the circle to the total number of points within the square can be used to estimate \( \pi \). Specifically, if we generate random points inside the square and count how many fall inside the circle, we can use the following formula to estimate \( \pi \):
 
-#### 4. Analysis:
-- Investigate how the accuracy of the estimate improves as the number of points increases.
-- Discuss the convergence rate and computational considerations for this method.
+\[
+\pi \approx 4 \times \left( \frac{\text{points inside the circle}}{\text{total points}} \right)
+\]
+
+This formula comes from the fact that the ratio of the area of the circle to the area of the square is \( \frac{\pi}{4} \), and thus the ratio of points inside the circle to the total points should approach \( \frac{\pi}{4} \) as the number of points increases.
+
+#### 2. Simulation
+
+The next step is to generate random points within the square and check how many fall inside the circle. To do this, we use the equation for a circle:
+
+\[
+x^2 + y^2 \leq 1
+\]
+
+where \( (x, y) \) are the coordinates of the randomly generated point. If this condition is satisfied, the point lies inside the circle. By repeating this process for a large number of points, we can estimate \( \pi \) based on the ratio of points inside the circle to the total points. As the number of points increases, the estimate of \( \pi \) should become more accurate.
+
+#### 3. Visualization
+
+In the simulation, we can visualize the randomly generated points, distinguishing between those that fall inside the circle and those that fall outside. The points inside the circle can be plotted in one color (e.g., blue), while the points outside the circle can be plotted in another color (e.g., red). This visualization helps us intuitively understand how the accuracy of the \( \pi \)-estimation improves as we generate more points.
+
+![alt text](image43.png)
+
+# Estimate Pi
+pi_estimate = 4 * np.sum(inside_circle) / N
+print(f"Estimated Pi: {pi_estimate}")
+
+### 4. Analysis
+
+As the number of points increases, the estimate of \( \pi \) becomes more accurate. This convergence is an important feature of the Monte Carlo method. Initially, the estimate of \( \pi \) may vary significantly with each run, but as the number of random points increases, the estimate stabilizes around the true value of \( \pi \). The rate of convergence can be analyzed through the law of large numbers, which states that the average of a large number of independent and identically distributed random variables will converge to the expected value.
+
+The computational cost of this method scales linearly with the number of points generated. This makes it a relatively simple and efficient approach to estimating \( \pi \), although it is not the fastest for extremely high precision, where analytical methods like the Leibniz formula for \( \pi \) or using series expansions may be more effective.
 
 ---
 
-### Part 2: Estimating \( \pi \) Using Buffon's Needle
+### Part 2: Estimating \( \pi \) Using Buffon’s Needle
 
-#### 1. Theoretical Foundation:
-- Describe Buffon’s Needle problem, where \( \pi \) can be estimated based on the probability of a needle crossing parallel lines on a plane.
-- Derive the formula:
- π ≈ \frac{\text{distance between lines} \times \text{number of crossings}}{2 \times \text{needle length} \times \text{number of throws}}
+#### 1. Theoretical Foundation
 
+Buffon’s Needle problem provides another fascinating way to estimate \( \pi \) through geometric probability. The problem involves a needle of length \( l \) being dropped onto a plane with parallel lines spaced a distance \( d \) apart. The probability that the needle crosses one of the lines is related to \( \pi \), and through this relationship, we can derive an estimate for \( \pi \).
 
-#### 2. Simulation:
-- Simulate the random dropping of a needle on a plane with parallel lines.
-- Count the number of times the needle crosses a line.
-- Estimate \( \pi \) based on the derived formula.
+The formula for estimating \( \pi \) from Buffon’s Needle is:
 
-#### 3. Visualization:
-- Create a graphical representation of the simulation, showing the needle positions relative to the lines.
+\[
+\pi \approx \frac{2 \times d \times \text{number of crossings}}{l \times \text{number of throws}}
+\]
 
-#### 4. Analysis:
-- Explore how the number of needle drops affects the estimate’s accuracy.
-- Compare the convergence rate of this method to the circle-based approach.
-```
+This formula is derived from the geometric properties of the needle and the lines, where \( \pi \) emerges from the ratio of the number of times the needle crosses a line to the total number of throws. This method requires simulating the random dropping of the needle and counting the number of crossings to estimate \( \pi \).
 
-```
-```python
-import numpy as np
-import matplotlib.pyplot as plt
+![alt text](image46.png)
 
-def monte_carlo_pi(num_points=10000):
-    inside_circle = 0
-    x_inside, y_inside = [], []
-    x_outside, y_outside = [], []
-    
-    for _ in range(num_points):
-        x, y = np.random.uniform(-1, 1, 2)
-        if x*2 + y*2 <= 1:
-            inside_circle += 1
-            x_inside.append(x)
-            y_inside.append(y)
-        else:
-            x_outside.append(x)
-            y_outside.append(y)
-    
-    pi_estimate = 4 * (inside_circle / num_points)
-    
-    plt.figure(figsize=(6,6))
-    plt.scatter(x_inside, y_inside, color='blue', s=1, label='Inside Circle')
-    plt.scatter(x_outside, y_outside, color='red', s=1, label='Outside Circle')
-    plt.xlabel("X")
-    plt.ylabel("Y")
-    plt.title(f"Monte Carlo π Estimation: π ≈ {pi_estimate:.5f}")
-    plt.legend()
-    plt.show()
-    
-    return pi_estimate
+#### 2. Simulation
 
-def buffon_pi(num_throws=10000, needle_length=1, line_spacing=2):
-    crossings = 0
-    
-    for _ in range(num_throws):
-        center = np.random.uniform(0, line_spacing / 2)
-        angle = np.random.uniform(0, np.pi)
-        
-        if center <= (needle_length / 2) * np.sin(angle):
-            crossings += 1
-    
-    if crossings == 0:
-        return None  # Avoid division by zero
-    
-    pi_estimate = (2 * needle_length * num_throws) / (line_spacing * crossings)
-    
-    return pi_estimate
+To simulate the problem, we randomly generate the position and angle of the needle for each throw. The position and angle determine whether the needle crosses a line. If the needle crosses a line, we increment the count of crossings. After a large number of throws, we can apply the formula to estimate \( \pi \).
 
-# Run simulations
-print("Monte Carlo method estimated π:", monte_carlo_pi(10000))
-print("Buffon's Needle method estimated π:", buffon_pi(10000))
+### 3. Visualization
 
+We can visualize the simulation by randomly dropping the needle on a set of parallel lines. For each throw, we can display the position and orientation of the needle relative to the lines, indicating whether it crosses a line.
 
-```
-![alt text](montecarlo.png)
+---
+
+### 4. Analysis
+
+The accuracy of the \( \pi \) estimate improves as the number of throws increases. This convergence, however, tends to be slower than the circle-based method due to the larger number of variables involved in determining whether the needle crosses a line. Nonetheless, Buffon’s Needle offers a novel and intriguing approach to estimating \( \pi \) and demonstrates the connection between geometry, probability, and randomness.
+
+---
+
+### Conclusion
+
+Both the Monte Carlo circle method and Buffon’s Needle provide fascinating ways to estimate \( \pi \). These methods illustrate the power of random sampling in estimating mathematical constants and highlight the intersection of geometry and probability in computational techniques. While the circle-based approach offers a relatively simple and fast convergence to the true value of \( \pi \), Buffon’s Needle provides a more complex, albeit slower, method that still relies on the randomness of the process. Both techniques are excellent examples of how randomness and probability can be employed to solve mathematical problems with remarkable accuracy.

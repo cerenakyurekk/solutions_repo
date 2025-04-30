@@ -21,7 +21,7 @@ If we take repeated samples from any population and compute their means:
 
 As \( n \to \infty \), the shape of the sampling distribution becomes increasingly bell-shaped (normal)—even if the population distribution is skewed or discrete.
 
-![alt text](image40.png)
+![alt text](image45.png)
 
 # How CLT Is Observed Through Simulation
 
