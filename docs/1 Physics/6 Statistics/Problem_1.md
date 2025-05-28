@@ -10,9 +10,9 @@ If we take repeated samples from any population and compute their means:
   
 - The spread (standard deviation) of the sample means becomes:
 
-  \[
+ $$ \[
   \sigma_{\overline{x}} = \frac{\sigma}{\sqrt{n}}
-  \]
+  \] $$
 
   where:
 
@@ -53,17 +53,17 @@ Each sample mean \( \bar{x}_i \) from a sample of size \( n \) is:
 \]
 
 - The mean of the sampling distribution:  
-  \[
+  $$ \[
   E[\bar{X}] = \mu
-  \]
+  \] $$
 - The variance of the sampling distribution:  
-  \[
+ $$ \[
   \text{Var}(\bar{X}) = \frac{\sigma^2}{n}
-  \]
+  \]$$
 - The distribution of \( \bar{X} \) tends toward:  
-  \[
+$$ \[
   \bar{X} \sim N\left(\mu, \frac{\sigma^2}{n}\right)
-  \]
+  \]$$
   as \( n \) increases.
 
 ![alt text](image41.png)

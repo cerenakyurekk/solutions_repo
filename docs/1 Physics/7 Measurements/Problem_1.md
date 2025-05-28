@@ -47,28 +47,28 @@ We use the pendulum’s oscillation period, which depends on \( g \) and the pen
 
 - Calculate average \( \overline{T_{10}} \), standard deviation \( \sigma_T \).
 - Uncertainty in timing:
-  \[
+ $$ \[
   \Delta T_{10} = \frac{\sigma_T}{\sqrt{10}}, \quad \Delta T = \frac{\Delta T_{10}}{10}
-  \]
+  \]$$
 
 ---
 
 ### Calculations
 
 - Period \( T \):
-  \[
+  $$\[
   T = \frac{\overline{T_{10}}}{10}
-  \]
+  \]$$
 
 - Gravitational acceleration \( g \):
-  \[
+ $$ \[
   g = \frac{4 \pi^2 L}{T^2}
-  \]
+  \]$$
 
 - Uncertainty \( \Delta g \):
-  \[
+ $$ \[
   \Delta g = g \sqrt{\left(\frac{\Delta L}{L}\right)^2 + \left(2 \frac{\Delta T}{T}\right)^2}
-  \]
+  \]$$
 
 ---
 

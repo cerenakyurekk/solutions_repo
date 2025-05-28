@@ -6,7 +6,7 @@ An **electric circuit** is a closed path that enables **electric current** to fl
 - **Conductive wires** for carrying the current
 - One or more **electrical components** (e.g., resistors, switches, bulbs)
 
-> ✅ A circuit must be **complete** and **unbroken** to function — allowing charges to circulate continuously.
+>  A circuit must be **complete** and **unbroken** to function — allowing charges to circulate continuously.
 
 ![alt text](image56.png)
 

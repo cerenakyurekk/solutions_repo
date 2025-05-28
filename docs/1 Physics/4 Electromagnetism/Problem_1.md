@@ -32,9 +32,9 @@ The **Lorentz force** describes the force experienced by a charged particle movi
 We'll implement a simulation that computes the trajectory of a charged particle under different field configurations. We'll start with a uniform magnetic field and then progress to combined electric and magnetic fields, and crossed fields.
 
 The Lorentz force is given by:
-\[
+$$\[
 \vec{F} = q(\vec{E} + \vec{v} \times \vec{B})
-\]
+\]$$
 where:
 - \( q \) is the charge of the particle,
 - \( \vec{E} \) is the electric field,
