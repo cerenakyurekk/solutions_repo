@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 1 - Physics and Mathematics</title>
+<title>Measuring Earth’s Gravitational Acceleration with a Pendulum - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 1";
+        var mkdocs_page_name = "Measuring Earth\u2019s Gravitational Acceleration with a Pendulum";
         var mkdocs_page_input_path = "1 Physics/7 Measurements/Problem_1.md";
         var mkdocs_page_url = null;
       </script>
@@ -90,8 +90,26 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal current">7 Measurements</a>
 <ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Measuring Earth’s Gravitational Acceleration with a Pendulum</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#why-measure-g-with-a-pendulum">Why Measure \( g \) with a Pendulum?</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#experimental-setup">Experimental Setup</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#data-collection">Data Collection</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#calculations">Calculations</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#example-calculation-with-python">Example Calculation with Python</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#analysis-and-sources-of-error">Analysis and Sources of Error</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#real-world-applications">Real-World Applications</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -111,7 +129,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">7 Measurements</li>
-<li class="breadcrumb-item active">Problem 1</li>
+<li class="breadcrumb-item active">Measuring Earth’s Gravitational Acceleration with a Pendulum</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -119,87 +137,117 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-1">Problem 1</h1>
-<h1 id="measuring-earths-gravitational-acceleration-with-a-pendulum">Measuring Earth's Gravitational Acceleration with a Pendulum</h1>
-<h2 id="motivation">Motivation</h2>
-<p>The acceleration <span class="arithmatex">\( g \)</span> due to gravity is a fundamental constant that influences various physical phenomena. Measuring <span class="arithmatex">\( g \)</span> accurately is important for understanding gravitational interactions, designing structures, and conducting experiments. A classic method for determining <span class="arithmatex">\( g \)</span> involves measuring the oscillations of a simple pendulum, where the period of oscillation depends on the local gravitational field.</p>
-<h2 id="task">Task</h2>
-<p>Measure the acceleration <span class="arithmatex">\( g \)</span> due to gravity using a pendulum and analyze the uncertainties in the measurements. This exercise emphasizes precision, uncertainty analysis, and their role in experimental physics.</p>
-<h2 id="procedure">Procedure</h2>
-<h3 id="1-materials">1. Materials</h3>
+<h1 id="measuring-earths-gravitational-acceleration-with-a-pendulum">Measuring Earth’s Gravitational Acceleration with a Pendulum</h1>
+<hr/>
+<h3 id="introduction">Introduction</h3>
+<p>The goal of this experiment is to measure the acceleration due to gravity, <span class="arithmatex">\( g \)</span>, using a simple pendulum. Since gravity influences everything from falling objects to the orbits of planets, knowing its value accurately is essential in physics and engineering.</p>
+<p>We use the pendulum’s oscillation period, which depends on <span class="arithmatex">\( g \)</span> and the pendulum length <span class="arithmatex">\( L \)</span>, to calculate <span class="arithmatex">\( g \)</span>. We also analyze uncertainties in our measurements to understand how precise and reliable our result is.</p>
+<hr/>
+<h3 id="why-measure-g-with-a-pendulum">Why Measure <span class="arithmatex">\( g \)</span> with a Pendulum?</h3>
 <ul>
-<li>A string (1 or 1.5 meters long).</li>
-<li>A small weight (e.g., a bag of coins, key chain, or sugar bag) attached to the string.</li>
-<li>Stopwatch (or smartphone timer).</li>
-<li>Ruler or measuring tape.</li>
+<li><strong>Direct and simple</strong>: Requires minimal equipment.</li>
+<li><strong>Educational</strong>: Demonstrates harmonic motion and error analysis.</li>
+<li><strong>Practical</strong>: Calibration of instruments, designing sensors, and geophysical surveys.</li>
 </ul>
-<h3 id="2-setup">2. Setup</h3>
+<hr/>
+<h3 id="experimental-setup">Experimental Setup</h3>
+<p><strong>Materials:</strong></p>
+<ul>
+<li>String (~1 meter)</li>
+<li>Small weight (like a keychain or coins)</li>
+<li>Stopwatch or timer</li>
+<li>Ruler or measuring tape</li>
+</ul>
+<p><strong>Procedure:</strong></p>
 <ol>
-<li>Attach the weight to the string and fix the other end to a sturdy support.</li>
-<li>Measure the length of the pendulum, <span class="arithmatex">\( L \)</span>, from the suspension point to the center of the weight using a ruler or measuring tape. Record the resolution of the measuring tool and calculate the uncertainty as:
-   [
-   \Delta L = \frac{\text{Ruler Resolution}}{2}
-   ]</li>
+<li>Attach the weight to the string.</li>
+<li>Measure the length <span class="arithmatex">\( L \)</span> from the pivot point to the weight’s center of mass.</li>
+<li>Displace the pendulum less than 15° to maintain the small-angle approximation.</li>
+<li>Release and time 10 oscillations, repeat this 10 times for better statistics.</li>
 </ol>
-<h3 id="3-data-collection">3. Data Collection</h3>
-<ol>
-<li>Displace the pendulum slightly (&lt; 15<span class="arithmatex">\(^\circ\)</span>) and release it.</li>
-<li>Measure the time for 10 full oscillations (<span class="arithmatex">\( T_{10} \)</span>) and repeat this process 10 times. Record all measurements.</li>
-<li>Calculate the mean time for 10 oscillations (<span class="arithmatex">\( \overline{T}_{10} \)</span>) and the standard deviation (<span class="arithmatex">\( \sigma_T \)</span>).</li>
-<li>Determine the uncertainty in the mean time using:
-   [
-   \Delta T_{10} = \frac{\sigma_T}{\sqrt{n}}
-   ]
-   where <span class="arithmatex">\( n = 10 \)</span>.</li>
-</ol>
-<h2 id="calculations">Calculations</h2>
-<h3 id="1-calculate-the-period">1. Calculate the period</h3>
-<div class="arithmatex">\[
-T = \frac{\overline{T}_{10}}{10}, \quad \Delta T = \frac{\Delta T_{10}}{10}
-\]</div>
-<h3 id="2-determine-g">2. Determine <span class="arithmatex">\( g \)</span></h3>
-<div class="arithmatex">\[
-g = \frac{4\pi^2 L}{T^2}
-\]</div>
-<h3 id="3-propagate-uncertainties">3. Propagate uncertainties</h3>
-<div class="arithmatex">\[
-\Delta g = g \sqrt{\left( \frac{\Delta L}{L} \right)^2 + \left( 2 \frac{\Delta T}{T} \right)^2}
-\]</div>
-<h2 id="analysis">Analysis</h2>
-<ol>
-<li>Compare your measured <span class="arithmatex">\( g \)</span> with the standard value (9.81 m/s²).</li>
-<li>Discuss:</li>
-<li>The effect of measurement resolution on <span class="arithmatex">\( \Delta L \)</span>.</li>
-<li>Variability in timing and its impact on <span class="arithmatex">\( \Delta T \)</span>.</li>
-<li>Any assumptions or experimental limitations.</li>
-</ol>
-<p>```python
-import numpy as np</p>
-<h1 id="given-values">Given values</h1>
-<p>T_10 = 20.190  # Mean time for 10 oscillations in seconds
-std_T = 0.120  # Standard deviation in seconds
-delta_T_10 = 0.038  # Uncertainty in mean time for 10 oscillations in seconds</p>
-<h1 id="period-for-one-oscillation-calculated-earlier">Period for one oscillation (calculated earlier)</h1>
-<p>T = 2.019  # Period of one oscillation in seconds
-delta_T = 0.004  # Uncertainty in period in seconds</p>
-<h1 id="length-of-the-pendulum-assumed-for-calculation-purposes">Length of the pendulum (assumed for calculation purposes)</h1>
-<p>L = 1.0  # Length of the pendulum in meters (example)</p>
-<h1 id="gravitational-acceleration-calculated-earlier">Gravitational acceleration (calculated earlier)</h1>
-<p>g_measured = 9.685  # Measured gravitational acceleration in m/s²
-delta_g_measured = 0.038  # Uncertainty in g in m/s²</p>
-<h1 id="calculation-of-gravitational-acceleration-using-the-formula">Calculation of gravitational acceleration using the formula</h1>
-<h1 id="g-4-pi2-l-t2">g = (4 * pi^2 * L) / T^2</h1>
-<p>pi = np.pi
-g_calculated = (4 * pi<strong>2 * L) / (T</strong>2)</p>
-<h1 id="propagate-the-uncertainty-in-g">Propagate the uncertainty in g</h1>
-<h1 id="uncertainty-in-g-g-sqrtdelta_l-l2-2-delta_t-t2">Uncertainty in g = g * sqrt((delta_L / L)^2 + (2 * delta_T / T)^2)</h1>
-<p>delta_L = 0.001  # Uncertainty in length, assume 1 mm uncertainty in measurement
-delta_g = g_calculated * np.sqrt((delta_L / L)<strong>2 + (2 * delta_T / T)</strong>2)</p>
-<h1 id="print-the-results">Print the results</h1>
-<p>print(f"Measured Gravitational Acceleration (g): {g_measured:.4f} m/s²")
-print(f"Uncertainty in g: ±{delta_g_measured:.4f} m/s²")
-print(f"Calculated Gravitational Acceleration (g): {g_calculated:.4f} m/s²")
-print(f"Uncertainty in g from calculations: ±{delta_g:.4f} m/s²")</p>
+<hr/>
+<h3 id="data-collection">Data Collection</h3>
+<table>
+<thead>
+<tr>
+<th>Trial #</th>
+<th>Time for 10 oscillations <span class="arithmatex">\(T_{10}\)</span> (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>20.05</td>
+</tr>
+<tr>
+<td>2</td>
+<td>20.10</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>10</td>
+<td>20.13</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Calculate average <span class="arithmatex">\( \overline{T_{10}} \)</span>, standard deviation <span class="arithmatex">\( \sigma_T \)</span>.</li>
+<li>Uncertainty in timing:
+  [
+  \Delta T_{10} = \frac{\sigma_T}{\sqrt{10}}, \quad \Delta T = \frac{\Delta T_{10}}{10}
+  ]</li>
+</ul>
+<hr/>
+<h3 id="calculations">Calculations</h3>
+<ul>
+<li>
+<p>Period <span class="arithmatex">\( T \)</span>:
+  [
+  T = \frac{\overline{T_{10}}}{10}
+  ]</p>
+</li>
+<li>
+<p>Gravitational acceleration <span class="arithmatex">\( g \)</span>:
+  [
+  g = \frac{4 \pi^2 L}{T^2}
+  ]</p>
+</li>
+<li>
+<p>Uncertainty <span class="arithmatex">\( \Delta g \)</span>:
+  [
+  \Delta g = g \sqrt{\left(\frac{\Delta L}{L}\right)^2 + \left(2 \frac{\Delta T}{T}\right)^2}
+  ]</p>
+</li>
+</ul>
+<hr/>
+<p><img alt="alt text" src="../image59.png"/></p>
+<h3 id="example-calculation-with-python">Example Calculation with Python</h3>
+<p>Here’s a Python script (not shown here) you can use to calculate <span class="arithmatex">\( g \)</span> and its uncertainty based on your measurements.</p>
+<hr/>
+<h3 id="analysis-and-sources-of-error">Analysis and Sources of Error</h3>
+<ul>
+<li>Our measured <span class="arithmatex">\( g \approx 9.79 \, \text{m/s}^2 \)</span> is close to the standard <span class="arithmatex">\(9.81 \, \text{m/s}^2\)</span>.</li>
+<li>Possible errors:</li>
+<li>Length measurement precision.</li>
+<li>Timing reaction time.</li>
+<li>Angle greater than 15° violating small-angle approximation.</li>
+<li>Air resistance and friction at the pivot.</li>
+<li>These contribute to the uncertainty in <span class="arithmatex">\( g \)</span>.</li>
+</ul>
+<hr/>
+<h3 id="real-world-applications">Real-World Applications</h3>
+<ul>
+<li><strong>Geophysics</strong>: Detect underground structures by gravity variation.</li>
+<li><strong>Engineering</strong>: Design of accelerometers and motion detectors.</li>
+<li><strong>Astronomy</strong>: Compare gravity on different planets.</li>
+<li><strong>Education</strong>: Build experimental and data analysis skills.</li>
+</ul>
+<hr/>
+<h3 id="conclusion">Conclusion</h3>
+<p>Using a pendulum to measure <span class="arithmatex">\( g \)</span> is a straightforward and educational experiment that highlights important physics concepts and uncertainty analysis. With careful measurements and repetition, one can obtain a reliable estimate of Earth’s gravitational acceleration, deepening the understanding of gravitational forces that govern natural motion.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">

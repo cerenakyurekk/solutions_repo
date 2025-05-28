@@ -92,7 +92,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal">7 Measurements</a>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../7%20Measurements/Problem_1/">Problem 1</a>
+<li class="toctree-l2"><a class="reference internal" href="../../7%20Measurements/Problem_1/">Measuring Earth’s Gravitational Acceleration with a Pendulum</a>
 </li>
 </ul>
 </li>
@@ -129,7 +129,7 @@
 <blockquote>
 <p>✅ A circuit must be <strong>complete</strong> and <strong>unbroken</strong> to function — allowing charges to circulate continuously.</p>
 </blockquote>
-<p><img alt="Simple Circuit Diagram" src="./Pictures/simple_circuit_diagram.png"/></p>
+<p><img alt="alt text" src="../image56.png"/></p>
 <hr/>
 <h1 id="calculating-equivalent-resistance-using-graph-theory">Calculating Equivalent Resistance Using Graph Theory</h1>
 <p>In <strong>graph theory</strong>, a resistor network can be represented as a graph where:</p>
@@ -149,6 +149,29 @@
    ```math
    R_eq(a, b) = L⁺[a,a] + L⁺[b,b] - 2 * L⁺[a,b]</li>
 </ol>
+<p><img alt="alt text" src="../image57.png"/></p>
+<p>Function CalculateEquivalentResistance(graph, node_start, node_end):
+While number of edges &gt; 1:
+For each node N in graph:</p>
+<pre><code>        # --- Series Reduction ---
+        If N has exactly two neighbors (A and B) and N is not start or end:
+            R1 = resistance between N and A
+            R2 = resistance between N and B
+            Replace edges (A-N) and (N-B) with a single edge (A-B) of resistance R1 + R2
+            Remove node N
+
+        # --- Parallel Reduction ---
+        For each pair of nodes (U, V) with multiple edges:
+            Combine all resistors R1, R2, ..., Rn between U and V
+            R_parallel = 1 / (1/R1 + 1/R2 + ... + 1/Rn)
+            Replace multiple edges with a single edge (U-V) of resistance R_parallel
+
+Return resistance between node_start and node_end
+
+## Pseudocode Explanation: Series and Parallel Resistor Reduction
+</code></pre>
+<p>This pseudocode outlines an algorithm to compute the <strong>equivalent resistance</strong> between two nodes in a resistor network by identifying and reducing <strong>series</strong> and <strong>parallel</strong> connections.</p>
+<p><img alt="alt text" src="../image58.png"/></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
