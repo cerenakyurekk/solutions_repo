@@ -10,28 +10,32 @@ An **electric circuit** is a closed path that enables **electric current** to fl
 
 ![alt text](image56.png)
 
+![alt text](image57.png)
 ---
 
-# Calculating Equivalent Resistance Using Graph Theory
+## Calculating Equivalent Resistance Using Graph Theory
 
-In **graph theory**, a resistor network can be represented as a graph where:
+In graph theory, an electric circuit can be represented as a graph where:
 
-- **Nodes (vertices)** = circuit junctions
-- **Edges** = resistors (edge weight = resistance)
+- **Nodes (vertices)** represent circuit junctions.
+- **Edges** represent resistors, each with a weight equal to its resistance.
 
-## Method Overview
+To compute the **equivalent resistance** between two nodes, graph-based methods such as the following are used:
 
-1. **Model** the circuit as an undirected weighted graph.
-2. **Construct the conductance matrix** (1/R for each resistor).
-3. **Build the Laplacian matrix** `L`:
+### Algorithm Steps:
+
+1. **Model the circuit** as an undirected weighted graph (resistors are bidirectional).
+2. **Create the conductance matrix** (inverse of resistance for each edge).
+3. **Build the Laplacian matrix (L)** of the graph, where:
    - `L = D - A`
-   - `D`: Degree matrix (sum of conductances at each node)
-   - `A`: Adjacency matrix (using conductance values)
-4. Use the **Moore-Penrose pseudoinverse** of `L` (denoted `L⁺`) to compute:
-   ```math
-   R_eq(a, b) = L⁺[a,a] + L⁺[b,b] - 2 * L⁺[a,b]
+   - `D`: Degree matrix (sum of conductances connected to each node)
+   - `A`: Adjacency matrix of conductances
+4. **Use the Moore-Penrose pseudoinverse** of the Laplacian (`L⁺`) to find the equivalent resistance:
+   - `R_eq(a, b) = L⁺[a,a] + L⁺[b,b] - 2 * L⁺[a,b]`
 
- ![alt text](image57.png)
+This method is powerful for analyzing **complex resistor networks**, especially in software and computational circuits.
+
+ ![alt text](image60.png)
 
 Function CalculateEquivalentResistance(graph, node_start, node_end):
 While number of edges > 1:
