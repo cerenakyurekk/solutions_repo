@@ -78,6 +78,14 @@
 <ul class="current">
 <li class="toctree-l2 current"><a class="reference internal current" href="#">What is an Electric Circuit?</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#_1"></a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#calculating-equivalent-resistance-using-graph-theory">Calculating Equivalent Resistance Using Graph Theory</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#algorithm-steps">Algorithm Steps:</a>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -130,26 +138,27 @@
 <p>✅ A circuit must be <strong>complete</strong> and <strong>unbroken</strong> to function — allowing charges to circulate continuously.</p>
 </blockquote>
 <p><img alt="alt text" src="../image56.png"/></p>
-<hr/>
-<h1 id="calculating-equivalent-resistance-using-graph-theory">Calculating Equivalent Resistance Using Graph Theory</h1>
-<p>In <strong>graph theory</strong>, a resistor network can be represented as a graph where:</p>
+<h2 id="_1"><img alt="alt text" src="../image57.png"/></h2>
+<h2 id="calculating-equivalent-resistance-using-graph-theory">Calculating Equivalent Resistance Using Graph Theory</h2>
+<p>In graph theory, an electric circuit can be represented as a graph where:</p>
 <ul>
-<li><strong>Nodes (vertices)</strong> = circuit junctions</li>
-<li><strong>Edges</strong> = resistors (edge weight = resistance)</li>
+<li><strong>Nodes (vertices)</strong> represent circuit junctions.</li>
+<li><strong>Edges</strong> represent resistors, each with a weight equal to its resistance.</li>
 </ul>
-<h2 id="method-overview">Method Overview</h2>
+<p>To compute the <strong>equivalent resistance</strong> between two nodes, graph-based methods such as the following are used:</p>
+<h3 id="algorithm-steps">Algorithm Steps:</h3>
 <ol>
-<li><strong>Model</strong> the circuit as an undirected weighted graph.</li>
-<li><strong>Construct the conductance matrix</strong> (1/R for each resistor).</li>
-<li><strong>Build the Laplacian matrix</strong> <code>L</code>:</li>
+<li><strong>Model the circuit</strong> as an undirected weighted graph (resistors are bidirectional).</li>
+<li><strong>Create the conductance matrix</strong> (inverse of resistance for each edge).</li>
+<li><strong>Build the Laplacian matrix (L)</strong> of the graph, where:</li>
 <li><code>L = D - A</code></li>
-<li><code>D</code>: Degree matrix (sum of conductances at each node)</li>
-<li><code>A</code>: Adjacency matrix (using conductance values)</li>
-<li>Use the <strong>Moore-Penrose pseudoinverse</strong> of <code>L</code> (denoted <code>L⁺</code>) to compute:
-   ```math
-   R_eq(a, b) = L⁺[a,a] + L⁺[b,b] - 2 * L⁺[a,b]</li>
+<li><code>D</code>: Degree matrix (sum of conductances connected to each node)</li>
+<li><code>A</code>: Adjacency matrix of conductances</li>
+<li><strong>Use the Moore-Penrose pseudoinverse</strong> of the Laplacian (<code>L⁺</code>) to find the equivalent resistance:</li>
+<li><code>R_eq(a, b) = L⁺[a,a] + L⁺[b,b] - 2 * L⁺[a,b]</code></li>
 </ol>
-<p><img alt="alt text" src="../image57.png"/></p>
+<p>This method is powerful for analyzing <strong>complex resistor networks</strong>, especially in software and computational circuits.</p>
+<p><img alt="alt text" src="../image60.png"/></p>
 <p>Function CalculateEquivalentResistance(graph, node_start, node_end):
 While number of edges &gt; 1:
 For each node N in graph:</p>
